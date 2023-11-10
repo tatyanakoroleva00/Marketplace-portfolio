@@ -1,0 +1,46 @@
+[{
+    "id": 1, 
+    "text" : "Обувь",
+    "category": "shoes"
+},
+{
+    "id": 2, 
+    "text" : "Одежда",
+    "category": "clothes"
+},
+{
+    "id": 3, 
+    "text" : "Мебель",
+    "category": "furniture"
+},
+{
+    "id": 4, 
+    "text" : "Уход за телом",
+    "category": "selfcare"
+},
+{
+    "id": 5, 
+    "text" : "Игрушки",
+    "category": "toys"
+},
+{
+    "id": 6, 
+    "text" : "Продукты",
+    "category": "grocery"
+},
+{
+    "id": 7, 
+    "text" : "Электроника",
+    "category": "electronics"
+},
+{
+    "id": 8, 
+    "text" : "Спорт",
+    "category": "sports"
+},
+{
+    "id": 9, 
+    "text" : "Авто",
+    "category": "auto"
+}
+]

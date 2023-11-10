@@ -1,0 +1,24 @@
+.header {
+    box-sizing: border-box;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(227,127,12,1) 0%, rgba(252,224,31,1) 46%, rgba(252,198,31,1) 79%);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 1003;
+    position: relative;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.header__container {
+    display: flex;
+    flex-direction: column;
+    max-width: 90rem;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .header__container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

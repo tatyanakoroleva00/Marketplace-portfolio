@@ -1,0 +1,86 @@
+.item-card {
+    width: 13rem;
+    box-sizing: border-box;
+    height: 20rem;
+}
+.item-top {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 10rem;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    opacity: 0.97;
+    cursor: pointer;
+    position: relative;
+}
+
+.item-pic {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.item-pic:hover {
+    opacity: 1;
+    width: 110%;
+    height: 110%;
+}
+.item-middle {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+.price {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.description {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 1rem;
+}
+.favourite {
+    opacity: 0.7;
+    position: absolute;
+    bottom: 0;
+    right: -2rem;
+    font-size: 1.8rem;
+}
+
+.clicked-fav {
+    position: absolute;
+    bottom: 0;
+    right: -2rem;
+    height: 2rem;
+    width: 2rem;
+}
+.buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+.submit-btn, .delete-btn {
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.delete-btn {
+    background-color: red;
+    padding: 0.5rem;
+}
+.submit-btn:hover {
+    background-color: rgb(61, 236, 61);
+}
+.submitted {
+    background-color: rgb(61, 236, 61);
+}
+.default {
+    background-color: orange;
+}

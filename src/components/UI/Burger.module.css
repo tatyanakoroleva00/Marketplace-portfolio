@@ -1,0 +1,26 @@
+.burger {
+    padding: 1.5rem;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.495);
+    border-radius: 10px;
+    color: white;
+    position: relative;
+    cursor: pointer;
+}
+.burger:hover {
+    border: 1px solid white;
+}
+.burger span {
+    width: 20px;
+    height: 2px;
+    background: rgb(255, 255, 255);
+    position: absolute;
+    top: 50%;
+    left: 30%;
+}
+.burger span:nth-of-type(2) {
+    top: calc(50% - 7px);
+}
+.burger span:nth-of-type(3) {
+    top: calc(50% + 7px);
+}

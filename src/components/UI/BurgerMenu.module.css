@@ -1,0 +1,61 @@
+.burger-menu-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    background-color: white;
+    z-index: 1001;
+    width: 15rem;
+    border: 0.3px solid rgb(224, 224, 224);
+    animation-duration: 0.3s;
+    animation-name: slideIn;
+}
+
+@keyframes slideIn {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 0%;
+    }
+}
+
+.burger-menu {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.burger-menu__item {
+    color: black;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 10rem;
+    border: 1px solid rgba(128, 128, 128, 0.143);
+}
+.burger-menu__item:hover {
+    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(71,9,121,1) 10%, rgba(0,212,255,1) 100%); */
+    background: rgba(62, 62, 61, 0.117);
+
+}
+.burger-menu__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    gap: 0.3rem;
+}
+.burger-menu__link span:first-child {
+    opacity: 0.4;
+    font-weight: 300;
+}
+.menu-close-btn span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1001;
+    color: black;
+    cursor: pointer;
+    padding: 1rem;
+    font-size: 2rem;
+}

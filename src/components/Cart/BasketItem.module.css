@@ -1,0 +1,30 @@
+.basket-item-wrap {
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    justify-content: space-between;
+}
+.left-col {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+.left-col div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item-pic {
+    width: 5rem;
+    height: 5rem;
+}
+.right-col {
+    display: flex;
+    align-items: center;
+}
+.item-price {
+    font-weight: bold;
+}
+.item-description {
+    width: 50%;
+}

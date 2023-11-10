@@ -1,0 +1,40 @@
+.list-items {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+    width: 50rem;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 0px 0px 10px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.120);
+    border-left: 1px solid rgba(0, 0, 0, 0.120);
+    border-right: 1px solid rgba(0, 0, 0, 0.120);
+    cursor: pointer;
+}
+.list-item {
+    color: black;
+    padding: 1rem;
+}
+.list-item:hover {
+    background-color: rgba(0, 0, 0, 0.033);
+    /* background-color: rgba(255, 162, 162, 0.252); */
+}
+
+.white {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+    width: 50rem;
+    padding: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px 10px 0px 0px;
+    border-top: 1px solid rgba(0, 0, 0, 0.120);
+    border-left: 1px solid rgba(0, 0, 0, 0.120);
+    border-right: 1px solid rgba(0, 0, 0, 0.120);
+}

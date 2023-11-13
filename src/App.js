@@ -1,51 +1,81 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/Registration/Login";
+import Cart from "./components/Cart/Cart";
+import BurgerMenu from "./components/BurgerMenu/BurgerMenu";
+import "./App.css";
+import SliderCarousel from "./components/SliderCarousel/SliderCarousel";
+import Items from "./components/Main/Items/Items";
+import FullItem from "./components/Main/Items/FullItem";
+
+const ordersFromLocalStorage = JSON.parse(localStorage.getItem('orders') || "[]")
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loginBtnState, setLoginBtnState] = useState(false);
+  const [showFullItem, setShowFullItem] = useState(false);
+  const [burgerBtnState, setBurgerBtnState] = useState(false);
+  const [burgerMenuIsOpened, setBurgerMenuIsOpened] = useState(false);
   const [category, setCategory] = useState(["furniture"]);
+  const [rusCategory, setRusCategory] = useState("Мебель");
   const [likes, setLikes] = useState(0);
-  const [itemsInTheBasket, setItemsInTheBasket] = useState([]);
-  const [openedBasket, setOpenedBasket] = useState(false);
-  const [menuIsOpened, setMenuIsOpened] = useState(false);
+  const [orders, setOrders] = useState(ordersFromLocalStorage);
+  const [cartIsOpened, setCartIsOpened] = useState();
+  const [showHomePage, setShowHomePage] = useState(true);
+  const [itemChosen, setItemChosen] = useState('');
 
-  const menuHandler = () => {
-    if (openedBasket === true) {
-      setOpenedBasket(false);
+  /**************************************************FUNCTIONS *********************************/
+
+  useEffect(() => {localStorage.setItem('orders', JSON.stringify(orders))}, [orders]);
+  const burgerBtnStateHandler = () => {
+    setBurgerBtnState(burgerBtn => !burgerBtn);
+    burgerBtnState ? setBurgerMenuIsOpened(true) : setBurgerMenuIsOpened(false);
+  };
+
+  /*Товары в корзине - кладутся, фильтр одинаковых. Если уже есть такой товар, он не добавляется в корзину. */
+  const onSaveOrderItemHandler = (item) => {
+    let isInArray = false;
+    if (orders.length > 0) {
+      orders.forEach((el) => {
+        if (el.id === item.id) {
+          console.log("oups");
+          isInArray = true;
+        }
+      });
     }
-    setMenuIsOpened(!menuIsOpened);
+    if (!isInArray) {
+      setOrders((prevState) => {
+        return [...prevState, 
+          {...item, totalPrice: item.price} ];
+      });
+    }
   };
+  console.log(orders);
 
-  const openTheBasketHandler = (data) => {
-    setOpenedBasket(!openedBasket);
-  }
-
-  const itemsInTheBasketHandler = (data) => {
-    setItemsInTheBasket(prevState => {
-      return [...prevState, data];
-    });
-    
+  /*Удалить заказ из корзины */
+  const deleteOrderHandler = (order) => {
+    setOrders(orders.filter((el) => el.id !== order.id));
   };
-
-  const likesHandler = (data) => {
+  /*Кол-во фаворитов*/
+  const onSaveLikesNumberHandler = (data) => {
     setLikes((prevState) => {
       return prevState + data;
     });
   };
-
-  const categoryHandler = (value) => {
-    setCategory(value);
+  /*Выбранная категория товара*/
+  const categoryHandler = (categoryItem, rusCategory) => {
+    setCategory(categoryItem);
+    setRusCategory(rusCategory);
   };
 
-  const getLoginBtnStateHandler = (loginData) => {
-    setLoginBtnState(loginData);
+  /*Статус кнопки входа / выхода в систему */
+  const loginBtnStateHandler = () => {
+    setLoginBtnState((loginBtnState) => !loginBtnState);
   };
 
-  const getLoginStatusHandler = (loginStatus) => {
+  //Статус: пользователь в системе или нет
+  const loginStatusHandler = (loginStatus) => {
     setLoggedIn(loginStatus);
   };
 
@@ -53,43 +83,74 @@ export default function App() {
     setCategory(input);
   };
 
-  const getEmail = localStorage.getItem("userEmail");
-  const getPassword = localStorage.getItem("userPassword");
+  //Выход из системы
+  const logoutHandler = () => {
+    setLoginBtnState((loginBtnState) => !loginBtnState);
+    localStorage.clear();
+    window.location.reload();
+    setLoggedIn(false);
+  };
 
+  const showFullItemHandler = (item, value) => {
+    setShowFullItem(value);
+    setItemChosen(item);
+    console.log(item);
+  };
+
+  const openCartHandler = () => {
+    setCartIsOpened((cartIsOpened) => !cartIsOpened);
+    setShowHomePage(false);
+  };
+
+  const showHomePageHandler = (event, value) => {
+    event.preventDefault();
+    setShowHomePage(value);
+    setCartIsOpened(false);
+  };
   return (
     <div>
       <Header
-        email={getEmail}
-        password={getPassword}
         loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-        setLoginBtnState={setLoginBtnState}
+        setLoginStatus={loginStatusHandler}
+        getLoginBtnState={loginBtnStateHandler}
         onGetCategory={categoryHandler}
         onGetInputText={inputTextHandler}
+        logoutHandler={logoutHandler}
         likes={likes}
-        itemsInTheBasket={itemsInTheBasket}
-        onGetClickedBasketStatus = {openTheBasketHandler}
-        menuIsOpened={menuIsOpened}
-        menuHandler={menuHandler}
+        orders={orders}
+        burgerBtnStateHandler={burgerBtnStateHandler}
+        cartIsOpenedState={openCartHandler}
+        showHomePageHandler={showHomePageHandler}
       />
+      {cartIsOpened &&
+        <Cart orders={orders} deleteOrder={deleteOrderHandler} setOrders={setOrders} />
+      } 
+      {showHomePage && (
+        <div>
+          <SliderCarousel />
+          <Items
+            category={category}
+            rusCategory={rusCategory}
+            onSaveLikesNumber={onSaveLikesNumberHandler}
+            onSaveOrderItem={onSaveOrderItemHandler}
+            showFullItemHandler={showFullItemHandler}
+            showFullItem={showFullItem}
+          />
+          {burgerBtnState && <BurgerMenu
+              onGetCategory={categoryHandler}
+              burgerBtnStateHandler={burgerBtnStateHandler}
+              burgerMenuIsOpened={burgerMenuIsOpened}
+            /> }
+            
+            {showFullItem && <FullItem itemChosen={itemChosen} showFullItemHandler={showFullItemHandler}/>}
 
-      {loginBtnState && (
-        <Login
-          getloginStatus={getLoginStatusHandler}
-          getLoginBtnState={getLoginBtnStateHandler}
-        />
-      )}
-
-      {(!loginBtnState || (getEmail && getPassword && loggedIn)) && (
-        <Main
-          category={category}
-          loggedIn={loggedIn}
-          onSaveLikesNumber={likesHandler}
-          onSaveItemsChosen={itemsInTheBasketHandler}
-          openedBasket={openedBasket}
-          itemsInTheBasket={itemsInTheBasket}
-          menuIsOpened={menuIsOpened}
-        />
+          {!loggedIn && loginBtnState && (
+            <Login
+              getLoginStatus={loginStatusHandler}
+              getLoginBtnState={loginBtnStateHandler}
+            />
+          )}
+        </div>
       )}
       <Footer />
     </div>

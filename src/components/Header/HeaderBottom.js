@@ -1,28 +1,27 @@
 import React from "react";
 import styles from "./HeaderBottom.module.css";
-import Burger from "../UI/Burger";
-import SearchBar from "../UI/SearchBar";
+import Burger from "./Burger";
+import SearchBar from "./SearchBar";
 import PictureElements from "./PictureElements";
 export default function HeaderBottom({
-  menuHandler,
+  burgerBtnStateHandler,
   logoutHandler,
-  loggedIn,
-  setLoginBtnState,
+  getLoginBtnState,
   onGetInputText,
   likes,
-  itemsInTheBasket,
-  onGetClickedBasketStatus
+  orders,
+  onGetClickedCartStatus,
+  loggedIn, setLoginStatus, cartIsOpenedState, showHomePageHandler
 }) {
   return (
     <div className={styles["header__bottom"]}>
       <div
-        onClick={menuHandler}
         className={`${styles["header__nav-element"]} ${styles["nav-element"]}`}
       >
         <div className={styles["nav-element__burger"]}>
-          <Burger />
+          <Burger burgerBtnStateHandler={burgerBtnStateHandler} />
         </div>
-        <a className={styles["nav-element__marketplace"]} href="/">
+        <a className={styles["nav-element__marketplace"]} onClick={event => showHomePageHandler(event, true)}  href="/">
           Market Place
         </a>
       </div>
@@ -30,11 +29,13 @@ export default function HeaderBottom({
       <SearchBar onGetInputText={onGetInputText} />
       <PictureElements
         logoutHandler={logoutHandler}
-        loggedIn={loggedIn}
-        setLoginBtnState={setLoginBtnState}
+        setLoginStatus={setLoginStatus}
+        getLoginBtnState={getLoginBtnState}
         likes={likes}
-        itemsInTheBasket={itemsInTheBasket}
-        onGetClickedBasketStatus={onGetClickedBasketStatus}
+        orders={orders}
+        onGetClickedCartStatus={onGetClickedCartStatus}
+        loggedIn={loggedIn}
+        cartIsOpenedState={cartIsOpenedState}
       />
     </div>
   );

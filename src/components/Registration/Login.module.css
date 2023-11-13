@@ -1,9 +1,16 @@
-.registration {
+.backdrop {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding-top: 4rem;
-    min-height: 47vh;
+    padding: 2rem;
+    background-color:rgba(0, 0, 0, 0.695);
+    border-radius: 9px;
+    position: absolute;
+    z-index: 9998;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
 }
 h1 {
     text-align: center;
@@ -15,9 +22,11 @@ h1 {
     flex-direction: column;
     background-color: rgb(238, 238, 238);
     width: 22rem;
-    margin: 0 auto;
     border-radius: 1rem;
-    margin-bottom: 5rem;
+    position: absolute;
+    z-index: 9999;
+    top: 20%;
+    right: 43%;
 }
 .form-name {
     font-size: 1.8rem;

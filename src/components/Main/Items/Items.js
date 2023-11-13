@@ -1,30 +1,36 @@
 import React from "react";
 import Item from "./Item";
 import styles from "./Items.module.css";
-import {listedItems} from '../../../assets/Data/listedItems';
+import { listedItems } from "../../../assets/Data/listedItems";
 
-export default function Items({category, onSaveLikesNumber, onSaveItemsChosen}) {
-    const filteredItems = listedItems[`${category}`];
 
-      const getDataHandler = (data) => {
-    onSaveItemsChosen(data);
-  };
+export default function Items({
+  category, rusCategory,
+  onSaveLikesNumber,
+  onSaveOrderItem, showFullItemHandler, showFullItem
+}) {
+  const filteredItems = listedItems[`${category}`];
+
   return (
-    <div>
-      <div className={styles.items}>
-        {filteredItems.map((elem) => (
-          <Item
-            key={`${elem.id}${elem.description}`}
-            id = {elem.id}
-            pic={elem.img}
-            price={elem.price}
-            description={elem.description}
-            quantity={elem.quantity}
-            onSaveLikesNumber = {onSaveLikesNumber}
-            onSaveItemsChosen={onSaveItemsChosen}
-            getData={getDataHandler}
-          />
-        ))}
+    <div className="main">
+      <div className="main-container">
+        <p className={styles['category-name']}>{rusCategory}</p>
+        <div className={styles.items}>
+          {filteredItems.map((elem) => (
+            <Item
+              key={`${elem.id}${elem.description}`}
+              item = {elem}
+              id={elem.id}
+              pic={elem.img}
+              price={elem.price}
+              description={elem.description}
+              onSaveLikesNumber={onSaveLikesNumber}
+              onSaveOrderItem={onSaveOrderItem}
+              showFullItemHandler={showFullItemHandler}
+              showFullItem={showFullItem}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-.basket-item-wrap {
+.cart-item-wrap {
     display: flex;
     border: none;
     border-radius: 15px;
@@ -7,7 +7,7 @@
 .left-col {
     display: flex;
     justify-content: space-between;
-    width: 60%;
+    width: 80%;
 }
 .left-col div {
     display: flex;
@@ -17,6 +17,8 @@
 .item-pic {
     width: 5rem;
     height: 5rem;
+    object-fit: cover;
+    overflow: hidden;
 }
 .right-col {
     display: flex;
@@ -26,5 +28,12 @@
     font-weight: bold;
 }
 .item-description {
-    width: 50%;
+    width: 40%;
+}
+.trash-bin {
+    cursor: pointer;
+    transition: transform 200ms ease;
+}
+.trash-bin:hover {
+    transform: scale(1.1);
 }

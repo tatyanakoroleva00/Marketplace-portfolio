@@ -1,30 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./ItemsQuantity.module.css";
 
-export default function ItemsQuantity({ quantity, id, price, getFinalItemQuantity }) {
-  const [count, setCount] = useState(1);
-  const subtractionHandler = () => {
-    if (count === 0) {
-      setCount(0);
-    } else {
-      setCount(count - 1);
-    }
-  };
-  const additionHandler = () => {
-    if (count === quantity) {
-      setCount(quantity);
-    } else {
-      setCount(count + 1);
-    }
-  };
+export default function ItemsQuantity({ quantity, increase,  id, count, decrease}) {
 
-  getFinalItemQuantity(count, id);
-    
   return (
       <div>
         <span
-          className={`material-symbols-outlined ${styles["subtr-btn"]}`}
-          onClick={subtractionHandler}
+          className={`material-symbols-outlined ${styles["subtr-btn"]}`} onClick={() => decrease(id)}
         >
           do_not_disturb_on
         </span>
@@ -33,11 +15,11 @@ export default function ItemsQuantity({ quantity, id, price, getFinalItemQuantit
           type="number"
           value={count}
           max={quantity}
-          min={1}
+          min={0}
         />
         <span
           className={`material-symbols-outlined ${styles["add-btn"]}`}
-          onClick={additionHandler}
+          onClick={()=>increase(id)}
         >
           add_circle
         </span>

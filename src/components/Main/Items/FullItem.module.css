@@ -1,0 +1,48 @@
+.item {
+    position: relative;
+}
+.backdrop {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color:rgba(0, 0, 0, 0.695);
+    border-radius: 9px;
+    position: absolute;
+    z-index: 9998;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+.fullItem {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 10000;
+    width: 30rem;
+    height: 40rem;
+    border-radius: 10px; 
+    background-color: rgb(255, 255, 255);
+    padding: 2rem;
+    top: 10%;
+    right: 40%;
+    position: sticky;
+}
+.fullItem-image {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.095);
+    margin-bottom: 1rem;
+}
+.description {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+}
+

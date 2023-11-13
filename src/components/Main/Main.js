@@ -1,5 +1,4 @@
 import React from "react";
-import Slider from "./Slider/Slider";
 import styles from "./Main.module.css";
 import Items from "./Items/Items";
 import Cart from "../Cart/Cart";
@@ -7,20 +6,19 @@ import Cart from "../Cart/Cart";
 export default function Main({
   category,
   onSaveLikesNumber,
-  onSaveItemsChosen,
-  openedBasket,
-  itemsInTheBasket,
+  onSaveOrders,
+  cartBtnState,
+  orders,
 }) {
   return (
     <div className={styles.main}>
       <div className={styles["main__container"]}>
-        {openedBasket ? <Cart itemsInTheBasket={itemsInTheBasket} /> : (
+        {cartBtnState ? <Cart orders={orders} /> : (
           <div>
-            <Slider />
             <Items
               category={category}
               onSaveLikesNumber={onSaveLikesNumber}
-              onSaveItemsChosen={onSaveItemsChosen}
+              onSaveOrders={onSaveOrders}
             />
           </div>
         )}

@@ -2,45 +2,36 @@ import React from "react";
 import styles from "./Header.module.css";
 import HeaderTop from "./HeaderTop";
 import HeaderBottom from "./HeaderBottom";
-import BurgerMenu from "../UI/BurgerMenu";
 
 const Header = ({
-  setLoggedIn,
   loggedIn,
-  setLoginBtnState,
-  onGetCategory,
+  getLoginBtnState,
   onGetInputText,
-  likes, 
-  itemsInTheBasket,
-  onGetClickedBasketStatus, 
-  menuHandler, menuIsOpened
+  likes,
+  orders,
+  onGetClickedCartStatus,
+  burgerBtnStateHandler,
+  setLoginStatus, logoutHandler, cartIsOpenedState, showHomePageHandler
 }) => {
   
-
-  const logoutHandler = () => {
-    localStorage.clear();
-    window.location.reload();
-    setLoggedIn(false);
-  };
 
   return (
     <>
       <div className={styles.header}>
-        {menuIsOpened && (
-          <BurgerMenu menuHandler={menuHandler} onGetCategory={onGetCategory} />
-        )}
         <div className={styles["header__container"]}>
           <HeaderTop />
           <HeaderBottom
             logoutHandler={logoutHandler}
-            menuHandler={menuHandler}
+            burgerBtnStateHandler={burgerBtnStateHandler}
             loggedIn={loggedIn}
-            setLoggedIn={setLoggedIn}
-            setLoginBtnState={setLoginBtnState}
+            setLoginStatus={setLoginStatus}
+            getLoginBtnState={getLoginBtnState}
             onGetInputText={onGetInputText}
             likes={likes}
-            itemsInTheBasket={itemsInTheBasket}
-            onGetClickedBasketStatus={onGetClickedBasketStatus}
+            orders={orders}
+            onGetClickedCartStatus={onGetClickedCartStatus}
+            cartIsOpenedState={cartIsOpenedState}
+            showHomePageHandler={showHomePageHandler}
           />
         </div>
       </div>

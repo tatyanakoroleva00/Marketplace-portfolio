@@ -1,0 +1,28 @@
+.main {
+    box-sizing: border-box;
+    width: 100%;
+    background: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    padding-bottom: 3rem;
+    min-height: 28rem;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 90rem;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 471px) {
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+@media screen and (min-width: 472px) and (max-width: 1476px) {
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

@@ -5,11 +5,10 @@
     padding-bottom: 3rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
-    margin-top: 2rem;
     bottom: 0;
     left: 0;
     right: 0;
-    position: sticky;
+    
 }
 .footer-inner {
     display: flex;

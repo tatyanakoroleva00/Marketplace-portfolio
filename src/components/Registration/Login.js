@@ -1,14 +1,13 @@
-import React, { useState, Fragment } from "react";
-import styles from './Login.module.css';
+import React, { useState } from "react";
+import styles from "./Login.module.css";
 export default function Login(props) {
-
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
 
   const database = {
     email: "tatyana00@mail.ru",
     password: "123",
-    username: 'Tatiana',
+    username: "Tatiana",
   };
 
   const emailOnChangeHandler = (e) => {
@@ -28,15 +27,20 @@ export default function Login(props) {
     ) {
       localStorage.setItem("userEmail", enteredEmail);
       localStorage.setItem("userPassword", enteredPassword);
-      localStorage.setItem('userName', database.username)
-      props.getloginStatus(true);
-      props.getLoginBtnState(false);
+      localStorage.setItem("userName", database.username);
+      localStorage.setItem("userIsLogged", "userIsLogged");
+      props.getLoginStatus(true);
+      props.getLoginBtnState();
     }
   };
   return (
-    <div className={styles.registration}>
-      <h1 className={styles["form-name"]}>Войти в личный кабинет</h1>
+    <div>
+      <div
+        className={styles.backdrop}
+        onClick={() => props.getLoginBtnState()}
+      ></div>
       <form onSubmit={formSubmitHandler} className={styles.form}>
+        <h1 className={styles["form-name"]}>Войти в личный кабинет</h1>
         <div className={styles["input-container"]}>
           <input
             type="email"

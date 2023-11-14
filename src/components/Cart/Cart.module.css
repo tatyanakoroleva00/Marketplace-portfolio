@@ -42,3 +42,25 @@
 .total div:first-child {
     font-weight: bold;
 }
+.order-btn {
+    border: none;
+    outline: none;
+    border-radius: 9px;
+    padding: 0.7rem 3rem;
+    background-image: linear-gradient(to right top, #2cf25f, #28ea59, #24e253, #1fdb4e, #1ad348, #15d444, #0fd540, #07d63b, #00e035, #00ea2d, #00f521, #00ff0b);
+    border: 1px solid rgba(128, 128, 128, 0.654);
+    opacity: 0.9;
+    color: white;
+    
+}
+.order-btn:hover {
+    opacity: 1;
+}
+.ordered {
+    opacity: 1;
+    background-image: linear-gradient(to right top, #ffa600, #ffa600, #ffa600, #ffa600, #ffa600, #ffaa00, #ffaf00, #ffb300, #ffbd00, #ffc700, #fed200, #fddc00);
+    
+}
+.order-made-notification {
+    text-align: center;
+}

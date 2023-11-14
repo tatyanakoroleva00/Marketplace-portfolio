@@ -11,7 +11,7 @@ const Header = ({
   orders,
   onGetClickedCartStatus,
   burgerBtnStateHandler,
-  setLoginStatus, logoutHandler, cartIsOpenedState, showHomePageHandler
+  setLoginStatus, logoutHandler, cartIsOpenedState, showHomePageHandler, setFavItemsBtnState, favItemBtnState, favItems
 }) => {
   
 
@@ -32,6 +32,9 @@ const Header = ({
             onGetClickedCartStatus={onGetClickedCartStatus}
             cartIsOpenedState={cartIsOpenedState}
             showHomePageHandler={showHomePageHandler}
+            setFavItemsBtnState={setFavItemsBtnState}
+            favItemBtnState={favItemBtnState}
+            favItems={favItems}
           />
         </div>
       </div>

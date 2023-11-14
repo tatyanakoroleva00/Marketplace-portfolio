@@ -2,10 +2,22 @@ import React from "react";
 import styles from "./Cart.module.css";
 import CartItem from "./CartItem";
 
-export default function Cart({ orders, deleteOrder, setOrders }) {
-
-  const total = orders.map(elem => elem.price * elem.count).reduce((total, item) => {return total + item}, 0);
-
+export default function Cart({ orders, deleteOrder, setOrders, setSubmitBtn, submitBtn }) {
+  const total = orders
+    .map((elem) => elem.price * elem.count)
+    .reduce((total, item) => {
+      return total + item;
+    }, 0);
+  const numberOfOrders = orders
+    .map((elem) => elem.count)
+    .reduce((total, item) => {
+      return total + item;
+    }, 0);
+  const submitBtnHandler = (event) => {
+    event.preventDefault();
+    setSubmitBtn(true);
+    setOrders([]);
+  };
 
   const increase = (id) => {
     console.log("Increase", id);
@@ -32,7 +44,7 @@ export default function Cart({ orders, deleteOrder, setOrders }) {
           if (item.count === 0) {
             return item;
           } else {
-            return { ...item, count: item.count--};
+            return { ...item, count: item.count-- };
           }
         }
         return item;
@@ -40,13 +52,16 @@ export default function Cart({ orders, deleteOrder, setOrders }) {
     );
   };
 
-
   return (
     <div className={styles["cart-wrapper"]}>
       <div className={styles.cart}>
         <div className={styles["cart-items"]}>
           <p className={styles["cart-title"]}>Корзина</p>
-          {orders.map((elem) => (
+
+    {!submitBtn && 
+    <div>
+      <div>
+        {orders.map((elem) => (
             <CartItem
               key={`${elem.id} ${elem.description}`}
               quantity={elem.quantity}
@@ -57,13 +72,29 @@ export default function Cart({ orders, deleteOrder, setOrders }) {
               decrease={decrease}
             />
           ))}
-          {orders.length === 0 && (
+      </div>
+      <div>
+        {orders.length === 0 && (
             <p className={styles.empty}>В корзине нет товаров.</p>
           )}
+      </div>
+    </div>
+    }
+    {submitBtn && 
+    
+    <p className={styles['order-made-notification']}>Спасибо за заказ!</p>}
+          
+          
         </div>
         <div className={styles.total}>
-          <div>Итого: {total}  </div>
-          <div>Товары: {orders.length} шт. </div>
+          <div>Итого: {total} &#8381; </div>
+          <div>Товары: {numberOfOrders} шт. </div>
+          <button
+            className={`${styles["order-btn"]} ${submitBtn && styles.ordered}`}
+            onClick={(event) => submitBtnHandler(event)}
+          >
+            {!submitBtn ? "Заказать" : "Заказ оформлен"}
+          </button>
         </div>
       </div>
     </div>

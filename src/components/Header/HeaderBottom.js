@@ -11,8 +11,7 @@ export default function HeaderBottom({
   likes,
   orders,
   onGetClickedCartStatus,
-  loggedIn, setLoginStatus, cartIsOpenedState, showHomePageHandler
-}) {
+  loggedIn, setLoginStatus, cartIsOpenedState, showHomePageHandler, setFavItemsBtnState, favItemBtnState, favItems}) {
   return (
     <div className={styles["header__bottom"]}>
       <div
@@ -36,6 +35,10 @@ export default function HeaderBottom({
         onGetClickedCartStatus={onGetClickedCartStatus}
         loggedIn={loggedIn}
         cartIsOpenedState={cartIsOpenedState}
+        setFavItemsBtnState={setFavItemsBtnState}
+        favItemBtnState={favItemBtnState}
+        favItems={favItems}
+        onGetInputText={onGetInputText}
       />
     </div>
   );

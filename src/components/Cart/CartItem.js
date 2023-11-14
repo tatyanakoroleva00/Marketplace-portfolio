@@ -22,7 +22,7 @@ export default function CartItem({ item, deleteOrder, increase, count, quantity,
         <div>(В наличии {item.quantity} шт.)</div>
       </div>
       <div className={styles["right-col"]}>
-        <div className={styles["item-price"]}>{item.price * item.count}</div>
+        <div className={styles["item-price"]}>{item.price * item.count} &#8381;</div>
       </div>
     </div>
   );

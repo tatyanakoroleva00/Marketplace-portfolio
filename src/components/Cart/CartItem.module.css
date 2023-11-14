@@ -3,6 +3,7 @@
     border: none;
     border-radius: 15px;
     justify-content: space-between;
+    margin-bottom: 1rem;
 }
 .left-col {
     display: flex;
@@ -16,7 +17,7 @@
 }
 .item-pic {
     width: 5rem;
-    height: 5rem;
+    height: 6rem;
     object-fit: cover;
     overflow: hidden;
 }

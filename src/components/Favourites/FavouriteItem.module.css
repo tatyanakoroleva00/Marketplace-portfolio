@@ -1,0 +1,29 @@
+.fav-item-card {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.left-col{
+    width: 80%;
+}
+.right-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+.fav-item-img {
+    width: 4rem;
+    height: 5rem;
+    object-fit: cover;
+    float: left;
+    margin-right: 1rem;
+}
+.trash-bin, .add-to-cart-btn {
+    padding: 1rem;
+    cursor: pointer;
+}
+.trash-bin:hover, .add-to-cart-btn:hover {
+    transform: scale(1.2);
+}

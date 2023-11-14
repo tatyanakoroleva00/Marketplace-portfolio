@@ -35,18 +35,22 @@ h1 {
     margin-bottom: 1rem;
 }
 .input-container {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .input-container input {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     font-size: 1.1rem;
-    padding-left: 0.5rem;
-    border: 1px solid rgba(110, 110, 110, 0.355);
+    padding-left: 1.5rem;
+    border: 1px solid rgba(110, 110, 110, 0.355); 
     border-radius: 5px;
 }
+.input-container input.red {
+    border: 1px solid rgba(235, 14, 14, 0.355);
+} 
 input::placeholder {
     font-size: 1rem;
 }
@@ -66,6 +70,21 @@ input::placeholder {
 }
 .submit-btn:hover {
     opacity: 1;
+}
+.error-message {
+    color: red;
+    margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
+}
+
+.password-icon, .user-icon {
+    position: absolute;
+    left: 2%;
+    top: 20%;
+}
+
+.forgot-password-link {
+    margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 520px) {

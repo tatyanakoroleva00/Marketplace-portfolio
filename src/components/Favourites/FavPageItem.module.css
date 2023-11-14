@@ -1,0 +1,36 @@
+.item-image {
+    width: 8rem;
+    height: 8rem;
+    object-fit: cover;
+    float: left;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+.item-content {
+    display: flex;
+    flex-direction: column;
+}
+.price {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+.item-description {
+    margin-bottom: 2rem;
+}
+.add-to-shopping-cart-btn {
+    font-size: 2rem;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.add-to-shopping-cart-btn:hover, .trash-bin:hover {
+    transform: scale(1.2);
+}
+.trash-bin {
+    cursor: pointer;
+    font-size: 2rem;
+}
+.picture-elements {
+    display: flex;
+    justify-content: space-between;
+}

@@ -3,11 +3,11 @@ import styles from "./PictureElements.module.css";
 export default function PictureElements({
   logoutHandler,
   getLoginBtnState,
-  likes,
-  orders, cartIsOpenedState
+  orders, cartIsOpenedState, setFavItemsBtnState, favItems
 }) {
   const userIsLogged = localStorage.getItem("userIsLogged");
   const numberOfItemsInTheCart = orders.length;
+  const numberOfFavourites = favItems.length;
 
   return (
     <div
@@ -49,7 +49,7 @@ export default function PictureElements({
           )}
         </div>
       </div>
-      <div className={styles["pic-element__favourite"]}>
+      <div className={styles["pic-element__favourite"]} onClick={()=>setFavItemsBtnState(favItemBtnState => !favItemBtnState)}>
         <div
           className={`${styles["pic-element"]} ${styles["favourite-element"]}`}
         >
@@ -57,12 +57,12 @@ export default function PictureElements({
             favorite
           </span>
           <span className={styles["picture-name"]}>Избранное</span>
-          {likes !== 0 && (
+          {numberOfFavourites !== 0 && (
             <span>
               <input
                 className={styles["favs-quantity"]}
                 type="text"
-                value={likes}
+                value={numberOfFavourites}
                 disabled
               />
             </span>

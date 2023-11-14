@@ -8,10 +8,8 @@ export default function SearchBar({onGetInputText}) {
   const onChangeInputHandler = (event) => {
     const value = event.target.value.toLowerCase();
     setEnteredValue(value);
-    if(enteredValue.length > 0) {
+    if(enteredValue.length === 0) {
       setListOpened(true);
-    } else {
-      setListOpened(false);
     }
     
   };
@@ -25,7 +23,7 @@ export default function SearchBar({onGetInputText}) {
         <span className={`material-symbols-outlined ${styles.search}`}>search</span>
         <span onClick={deleteInputHandler} className={`material-symbols-outlined ${styles.close}`}>close</span>
         <input
-          className={listOpened ? styles.white : styles["search-bar"]}
+          className={enteredValue ? styles.white : styles["search-bar"]}
           type="text"
           placeholder="Поиск..."
           width={50}

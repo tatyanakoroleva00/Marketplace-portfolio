@@ -9,15 +9,13 @@ export default function List({ input, listOpened, onGetInputText }) {
       return el.text.toLowerCase().includes(input);
     }
   });
-  const clickHandler = (item) => {
-    onGetInputText(item);
-  };
+
   return (
     <div>
       {input.length > 0 && (
         <ul className={listOpened ? styles["list-items"] : styles.white}>
           {filteredData.map((item) => (
-            <li onClick={() => clickHandler(item.category)} className={styles["list-item"]} key={item.id}>
+            <li onClick={() => onGetInputText(item.category, item.text)} className={styles["list-item"]} key={item.id}>
               {item.text}
             </li>
           ))}

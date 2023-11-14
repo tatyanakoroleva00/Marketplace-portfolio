@@ -4,13 +4,16 @@ import like from "../../../assets/images/like.png";
 export default function Item(props) {
   const [favClicked, setFavClicked] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const favClickHandler = () => {
+  const favClickHandler = (item) => {
     setFavClicked(favClicked => !favClicked);
     if (favClicked === true) {
       props.onSaveLikesNumber(1);
+      props.onSaveFavItems(true, props.item);
     } else {
       props.onSaveLikesNumber(-1);
+      props.onSaveFavItems(false, props.item);
     }
+    
   };
 
   let description = props.description;
@@ -39,19 +42,19 @@ export default function Item(props) {
         </div>
       </div>
       <div className={styles["item-middle"]}>
-        <p className={styles.price}>{props.price}&#8381;</p>
+        <p className={styles.price}>{props.price} &#8381;</p>
         {userIslogged && (
           <div>
         {favClicked ? (
           <span
-            onClick={favClickHandler}
+            onClick={() => favClickHandler(props.item)}
             className={`material-symbols-outlined ${styles.favourite}`}
           >
             favorite
           </span>
         ) : (
           <img
-            onClick={favClickHandler}
+            onClick={() => favClickHandler(props.item)}
             className={styles["clicked-fav"]}
             src={like}
             alt={like}

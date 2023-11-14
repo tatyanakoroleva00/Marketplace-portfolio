@@ -8,8 +8,15 @@ import "./App.css";
 import SliderCarousel from "./components/SliderCarousel/SliderCarousel";
 import Items from "./components/Main/Items/Items";
 import FullItem from "./components/Main/Items/FullItem";
+import Favourites from "./components/Favourites/Favourites";
+import FavouritesPage from "./components/Favourites/FavouritesPage";
 
-const ordersFromLocalStorage = JSON.parse(localStorage.getItem('orders') || "[]")
+const ordersFromLocalStorage = JSON.parse(
+  localStorage.getItem("orders") || "[]"
+);
+const favouritesFromLocalStorage = JSON.parse(
+  localStorage.getItem("favourites") || "[]"
+);
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -20,16 +27,25 @@ export default function App() {
   const [category, setCategory] = useState(["furniture"]);
   const [rusCategory, setRusCategory] = useState("Мебель");
   const [likes, setLikes] = useState(0);
+  const [favItems, setFavItems] = useState(favouritesFromLocalStorage);
+  const [favItemsBtnState, setFavItemsBtnState] = useState(false);
   const [orders, setOrders] = useState(ordersFromLocalStorage);
   const [cartIsOpened, setCartIsOpened] = useState();
   const [showHomePage, setShowHomePage] = useState(true);
-  const [itemChosen, setItemChosen] = useState('');
-
+  const [itemChosen, setItemChosen] = useState("");
+  const [submitBtn, setSubmitBtn] = useState(false);
+  const [showFavPage, setShowFavPage] = useState(false);
+  const [burgerMenuBtnIsClicked, setBurgerMenuBtnIsClicked] = useState(true);
+  const [filterByPriceBtn, setFilterByPriceBtn] = useState(false);
   /**************************************************FUNCTIONS *********************************/
 
-  useEffect(() => {localStorage.setItem('orders', JSON.stringify(orders))}, [orders]);
+  useEffect(() => {
+    localStorage.setItem("orders", JSON.stringify(orders));
+    localStorage.setItem("favourites", JSON.stringify(favItems));
+  }, [orders, favItems]);
+
   const burgerBtnStateHandler = () => {
-    setBurgerBtnState(burgerBtn => !burgerBtn);
+    setBurgerBtnState((burgerBtn) => !burgerBtn);
     burgerBtnState ? setBurgerMenuIsOpened(true) : setBurgerMenuIsOpened(false);
   };
 
@@ -43,19 +59,22 @@ export default function App() {
           isInArray = true;
         }
       });
+      setSubmitBtn(false);
     }
     if (!isInArray) {
       setOrders((prevState) => {
-        return [...prevState, 
-          {...item, totalPrice: item.price} ];
+        return [...prevState, { ...item, totalPrice: item.price }];
       });
     }
   };
-  console.log(orders);
+  // console.log(orders);
 
   /*Удалить заказ из корзины */
   const deleteOrderHandler = (order) => {
     setOrders(orders.filter((el) => el.id !== order.id));
+  };
+  const deleteFavItemHandler = (favItem) => {
+    setFavItems(favItems.filter((el) => el.id !== favItem.id));
   };
   /*Кол-во фаворитов*/
   const onSaveLikesNumberHandler = (data) => {
@@ -63,10 +82,33 @@ export default function App() {
       return prevState + data;
     });
   };
+  const onSaveFavItemsHandler = (value, item) => {
+    let isInArray = false;
+    if (favItems.length > 0) {
+      favItems.forEach((el) => {
+        if (el.id === item.id) {
+          console.log("oups");
+          isInArray = true;
+        }
+      });
+    }
+    if (!isInArray) {
+      setFavItems((prev) => {
+        return [...prev, item];
+      });
+    }
+    console.log(favItems);
+
+    if (!value) {
+      setFavItems(favItems.filter((el) => el.id !== item.id));
+    }
+  };
   /*Выбранная категория товара*/
   const categoryHandler = (categoryItem, rusCategory) => {
     setCategory(categoryItem);
     setRusCategory(rusCategory);
+    setBurgerMenuBtnIsClicked(true);
+    setFilterByPriceBtn(false);
   };
 
   /*Статус кнопки входа / выхода в систему */
@@ -79,8 +121,9 @@ export default function App() {
     setLoggedIn(loginStatus);
   };
 
-  const inputTextHandler = (input) => {
+  const inputTextHandler = (input, rusCategory) => {
     setCategory(input);
+    setRusCategory(rusCategory);
   };
 
   //Выход из системы
@@ -100,12 +143,23 @@ export default function App() {
   const openCartHandler = () => {
     setCartIsOpened((cartIsOpened) => !cartIsOpened);
     setShowHomePage(false);
+    setShowFavPage(false);
+    setFavItemsBtnState(false);
   };
 
   const showHomePageHandler = (event, value) => {
     event.preventDefault();
     setShowHomePage(value);
     setCartIsOpened(false);
+    setShowFavPage(false);
+    setBurgerMenuBtnIsClicked(true);
+  };
+
+  const showFavPageHandler = (event, value) => {
+    event.preventDefault();
+    setShowFavPage(value);
+    setCartIsOpened(false);
+    setShowHomePage(false);
   };
   return (
     <div>
@@ -121,10 +175,35 @@ export default function App() {
         burgerBtnStateHandler={burgerBtnStateHandler}
         cartIsOpenedState={openCartHandler}
         showHomePageHandler={showHomePageHandler}
+        setFavItemsBtnState={setFavItemsBtnState}
+        favItemsBtnState={favItemsBtnState}
+        favItems={favItems}
       />
-      {cartIsOpened &&
-        <Cart orders={orders} deleteOrder={deleteOrderHandler} setOrders={setOrders} />
-      } 
+
+      {showFavPage && (
+        <FavouritesPage
+          deleteFavItemHandler={deleteFavItemHandler}
+          onSaveOrderItemHandler={onSaveOrderItemHandler}
+          favItems={favItems}
+        />
+      )}
+      {favItemsBtnState && (
+        <Favourites
+          onSaveOrderItemHandler={onSaveOrderItemHandler}
+          setShowFavPage={showFavPageHandler}
+          favItems={favItems}
+          deleteFavItemHandler={deleteFavItemHandler}
+        />
+      )}
+      {cartIsOpened && (
+        <Cart
+          orders={orders}
+          deleteOrder={deleteOrderHandler}
+          setOrders={setOrders}
+          setSubmitBtn={setSubmitBtn}
+          submitBtn={submitBtn}
+        />
+      )}
       {showHomePage && (
         <div>
           <SliderCarousel />
@@ -135,14 +214,26 @@ export default function App() {
             onSaveOrderItem={onSaveOrderItemHandler}
             showFullItemHandler={showFullItemHandler}
             showFullItem={showFullItem}
+            onSaveFavItems={onSaveFavItemsHandler}
+            burgerMenuBtnIsClicked={burgerMenuBtnIsClicked}
+            filterByPriceBtn={filterByPriceBtn}
+            setFilterByPriceBtn={setFilterByPriceBtn}
+            setBurgerMenuBtnIsClicked={setBurgerMenuBtnIsClicked}
           />
-          {burgerBtnState && <BurgerMenu
+          {burgerBtnState && (
+            <BurgerMenu
               onGetCategory={categoryHandler}
               burgerBtnStateHandler={burgerBtnStateHandler}
               burgerMenuIsOpened={burgerMenuIsOpened}
-            /> }
-            
-            {showFullItem && <FullItem itemChosen={itemChosen} showFullItemHandler={showFullItemHandler}/>}
+            />
+          )}
+
+          {showFullItem && (
+            <FullItem
+              itemChosen={itemChosen}
+              showFullItemHandler={showFullItemHandler}
+            />
+          )}
 
           {!loggedIn && loginBtnState && (
             <Login

@@ -1,13 +1,28 @@
 .items {
     display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+    gap: 3rem;
     flex-wrap: wrap;
 }
 .category-name {
     font-weight: bold; 
     font-size: 3rem;
     margin-bottom: 1rem;
+}
+.filters-wrapper {
+    background-color: rgba(0, 0, 255, 0.023);
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 9px;
+
+}
+select {
+    border-radius: 9px;
+    padding: 0.5rem;
+    cursor: pointer;
+    max-width: 10rem;
+    border: 1px solid gray;
+    margin-top: 1rem;
 }
 
 @media screen and (max-width: 499px) {

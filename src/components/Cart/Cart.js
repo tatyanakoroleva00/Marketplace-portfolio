@@ -2,22 +2,13 @@ import React from "react";
 import styles from "./Cart.module.css";
 import CartItem from "./CartItem";
 
-export default function Cart({ orders, deleteOrder, setOrders, setSubmitBtn, submitBtn }) {
-  const total = orders
-    .map((elem) => elem.price * elem.count)
-    .reduce((total, item) => {
-      return total + item;
-    }, 0);
-  const numberOfOrders = orders
-    .map((elem) => elem.count)
-    .reduce((total, item) => {
-      return total + item;
-    }, 0);
-  const submitBtnHandler = (event) => {
-    event.preventDefault();
-    setSubmitBtn(true);
-    setOrders([]);
-  };
+export default function Cart({
+  orders,
+  deleteOrder,
+  setOrders,
+  setSubmitBtn,
+  submitBtn
+}) {
 
   const increase = (id) => {
     console.log("Increase", id);
@@ -28,7 +19,7 @@ export default function Cart({ orders, deleteOrder, setOrders, setSubmitBtn, sub
           if (item.count === item.quantity) {
             return item;
           } else {
-            return { ...item, count: item.count++ };
+            return { ...item, count: item.count + 1 };
           }
         }
         return item;
@@ -44,7 +35,7 @@ export default function Cart({ orders, deleteOrder, setOrders, setSubmitBtn, sub
           if (item.count === 0) {
             return item;
           } else {
-            return { ...item, count: item.count-- };
+            return { ...item, count: item.count - 1 };
           }
         }
         return item;
@@ -52,39 +43,57 @@ export default function Cart({ orders, deleteOrder, setOrders, setSubmitBtn, sub
     );
   };
 
+  const total = orders
+  .map((elem) => elem.price * elem.count)
+  .reduce((total, item) => {
+    return total + item;
+  }, 0);
+const numberOfOrders = orders
+  .map((elem) => elem.count)
+  .reduce((total, item) => {
+    return total + item;
+  }, 0);
+
+const submitBtnHandler = (event) => {
+  event.preventDefault();
+  setSubmitBtn(true);
+  setOrders([]);
+};
+
+
   return (
     <div className={styles["cart-wrapper"]}>
       <div className={styles.cart}>
         <div className={styles["cart-items"]}>
           <p className={styles["cart-title"]}>Корзина</p>
 
-    {!submitBtn && 
-    <div>
-      <div>
-        {orders.map((elem) => (
-            <CartItem
-              key={`${elem.id} ${elem.description}`}
-              quantity={elem.quantity}
-              count={elem.count}
-              item={elem}
-              deleteOrder={deleteOrder}
-              increase={increase}
-              decrease={decrease}
-            />
-          ))}
-      </div>
-      <div>
-        {orders.length === 0 && (
-            <p className={styles.empty}>В корзине нет товаров.</p>
+          {!submitBtn && (
+            <div>
+              <div>
+                {orders.map((elem) => (
+                  <CartItem
+                    key={`${elem.id} ${elem.description}`}
+                    quantity={elem.quantity}
+                    count={elem.count}
+                    item={elem}
+                    deleteOrder={deleteOrder}
+                    increase={increase}
+                    decrease={decrease}
+                  />
+                ))}
+              </div>
+              <div>
+                {orders.length === 0 && (
+                  <p className={styles.empty}>В корзине нет товаров.</p>
+                )}
+              </div>
+            </div>
           )}
-      </div>
-    </div>
-    }
-    {submitBtn && 
-    
-    <p className={styles['order-made-notification']}>Спасибо за заказ!</p>}
-          
-          
+          {submitBtn && (
+            <p className={styles["order-made-notification"]}>
+              Спасибо за заказ!
+            </p>
+          )}
         </div>
         <div className={styles.total}>
           <div>Итого: {total} &#8381; </div>

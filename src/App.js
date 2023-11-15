@@ -107,8 +107,8 @@ export default function App() {
   const categoryHandler = (categoryItem, rusCategory) => {
     setCategory(categoryItem);
     setRusCategory(rusCategory);
-    setBurgerMenuBtnIsClicked(true);
-    setFilterByPriceBtn(false);
+    // setBurgerMenuBtnIsClicked(true);
+    // setFilterByPriceBtn(false);
   };
 
   /*Статус кнопки входа / выхода в систему */
@@ -144,7 +144,7 @@ export default function App() {
     setCartIsOpened((cartIsOpened) => !cartIsOpened);
     setShowHomePage(false);
     setShowFavPage(false);
-    setFavItemsBtnState(false);
+    // setFavItemsBtnState(false);
   };
 
   const showHomePageHandler = (event, value) => {
@@ -162,7 +162,14 @@ export default function App() {
     setShowHomePage(false);
   };
   return (
+
+
     <div>
+
+
+
+
+
       <Header
         loggedIn={loggedIn}
         setLoginStatus={loginStatusHandler}

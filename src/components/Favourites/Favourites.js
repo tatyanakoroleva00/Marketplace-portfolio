@@ -4,7 +4,7 @@ import FavouriteItem from "./FavouriteItem";
 
 
 export default function Favourites({ favItems, deleteFavItemHandler, setShowFavPage, onSaveOrderItemHandler }) {
-  console.log(favItems);
+  // console.log(favItems);
   return (
     <div className={styles["favourite-items-modal-window"]}>
       <div className={styles["favourite-items-container"]}>

@@ -11,9 +11,9 @@ export default function Login(props) {
   const [mistakePassword, setMistakePassword] = useState(false);
 
   const database = {
-    email: "tatyana00@mail.ru",
+    email: "guest@mail.ru",
     password: "123",
-    username: "Tatiana",
+    username: "Guest",
   };
 
   const emailOnChangeHandler = (e) => {

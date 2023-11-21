@@ -29,7 +29,7 @@ FAVOURITES
 BURGER MENU
   1. categories and choice (products filter on the main page)
   2. slide in and slide out
-  3. 
+     
 PRODUCT
   1. scaling by clicking on it on the main page
   2. Add to cart from the main page

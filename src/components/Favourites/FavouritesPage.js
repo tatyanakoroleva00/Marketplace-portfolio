@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./FavouritesPage.module.css";
 import FavPageItem from "./FavPageItem";
 
-export default function FavouritesPage({ favItems, onSaveOrderItemHandler, deleteFavItemHandler }) {
+export default function FavouritesPage({ favItems, onSaveOrderItemHandler, deleteFavItemHandler, showFullItemHandler }) {
   console.log(favItems);
   return (
     <div className={styles["favItems-wrapper"]}>
@@ -12,7 +12,7 @@ export default function FavouritesPage({ favItems, onSaveOrderItemHandler, delet
           <div className={styles.items}>
             {favItems.map((item) => (
               <div className={styles["fav-item"]}>
-                <FavPageItem onSaveOrderItemHandler={onSaveOrderItemHandler} deleteFavItemHandler={deleteFavItemHandler} item={item} />
+                <FavPageItem onSaveOrderItemHandler={onSaveOrderItemHandler} deleteFavItemHandler={deleteFavItemHandler} item={item} showFullItemHandler={showFullItemHandler}/>
               </div>
             ))}
           </div>

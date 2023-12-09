@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Footer.module.css";
 import qrcode from './images/qr-code.png';
+import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <div className={styles["footer-wrap"]}>
@@ -11,17 +12,17 @@ export default function Footer() {
         </div>
         <ul className={styles["info-column"]}>
           <li className={styles['title']}>Market Place</li>
-          <li>О нас</li>
-          <li>Наши партнеры</li>
-          <li>Как стать нашим партнером</li>
+          <Link to="/about-us">О нас</Link>
+          <Link to="/our-partners">Наши партнеры</Link>
+          <Link to="/become-our-partner">Как стать нашим партнером</Link>
         </ul>
         <ul className={styles["info-column"]}>
-          <li className={styles['title']}>Помощь</li>
-          <li>Как сделать заказ</li>
-          <li>Оплата</li>
-          <li>Доставка</li>
-          <li>Как вернуть товар</li>
-          <li>Контакты</li>
+          <Link to="/help" className={styles['title']}>Помощь</Link>
+          <Link to="/to-order">Как сделать заказ</Link>
+          <Link to="/payment">Оплата</Link>
+          <Link to="/delivery">Доставка</Link>
+          <Link to="/return-the-good">Как вернуть товар</Link>
+          <Link to="/contacts">Контакты</Link>
         </ul>
         <ul className={styles["info-column"]}>
           <li className={styles['title']}>Горячая линия</li>

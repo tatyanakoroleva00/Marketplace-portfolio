@@ -2,13 +2,13 @@ import React from "react";
 import styles from "./CartItem.module.css";
 import ItemsQuantity from "./ItemsQuantity";
 import {GoTrash} from 'react-icons/go';
-export default function CartItem({ item, deleteOrder, increase, count, quantity, decrease}) {
-// console.log(item.count, item.price)
+export default function CartItem({ item, deleteOrder, increase, count, quantity, decrease, showFullItemHandler}) {
+  console.log(item);
   return (
     <div className={styles["cart-item-wrap"]}>
       <div className={styles["left-col"]}>
         <div>
-          <img className={styles["item-pic"]} src={item.img} alt={item.img} />
+          <img className={styles["item-pic"]} src={item.img} alt={item.img} onClick={()=>showFullItemHandler(item, true)}/>
         </div>
         <div className={styles["item-description"]}>
           <p>{item.description}</p>

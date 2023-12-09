@@ -2,7 +2,7 @@
     box-sizing: border-box;
     max-height: 100rem;
     overflow: auto;
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     padding: 1rem 2rem 1rem 1rem;
     overflow-x: hidden;

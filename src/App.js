@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/Registration/Login";
-import Cart from "./components/Cart/Cart";
 import BurgerMenu from "./components/BurgerMenu/BurgerMenu";
 import "./App.css";
 import SliderCarousel from "./components/SliderCarousel/SliderCarousel";
@@ -10,6 +9,16 @@ import Items from "./components/Main/Items/Items";
 import FullItem from "./components/Main/Items/FullItem";
 import Favourites from "./components/Favourites/Favourites";
 import FavouritesPage from "./components/Favourites/FavouritesPage";
+import { Routes, Route } from "react-router-dom";
+import Cart from "./components/Cart/Cart";
+import AboutUs from "./components/Footer/links/AboutUs";
+import Contacts from "./components/Footer/links/Contacts";
+import Delivery from "./components/Footer/links/Delivery";
+import HowToBecomeOurPartner from "./components/Footer/links/HowToBecomeOurPartner";
+import HowToOrder from "./components/Footer/links/HowToOrder";
+import HowToReturnTheGood from "./components/Footer/links/HowToReturnTheGood";
+import OurPartners from "./components/Footer/links/OurPartners";
+import Payment from "./components/Footer/links/Payment";
 
 const ordersFromLocalStorage = JSON.parse(
   localStorage.getItem("orders") || "[]"
@@ -30,26 +39,23 @@ export default function App() {
   const [favItems, setFavItems] = useState(favouritesFromLocalStorage);
   const [favItemsBtnState, setFavItemsBtnState] = useState(false);
   const [orders, setOrders] = useState(ordersFromLocalStorage);
-  const [cartIsOpened, setCartIsOpened] = useState();
-  const [showHomePage, setShowHomePage] = useState(true);
   const [itemChosen, setItemChosen] = useState("");
   const [submitBtn, setSubmitBtn] = useState(false);
-  const [showFavPage, setShowFavPage] = useState(false);
   const [burgerMenuBtnIsClicked, setBurgerMenuBtnIsClicked] = useState(true);
   const [filterByPriceBtn, setFilterByPriceBtn] = useState(false);
+  const [orderedGoods, setOrderedGoods] = useState([]);
   /**************************************************FUNCTIONS *********************************/
-
+  /*Авто-изменение данных в хранилище при изменении кол-ва заказов или фаворитов */
   useEffect(() => {
     localStorage.setItem("orders", JSON.stringify(orders));
     localStorage.setItem("favourites", JSON.stringify(favItems));
   }, [orders, favItems]);
-
+  //БУРГЕР. Открыть бургер-меню
   const burgerBtnStateHandler = () => {
     setBurgerBtnState((burgerBtn) => !burgerBtn);
     burgerBtnState ? setBurgerMenuIsOpened(true) : setBurgerMenuIsOpened(false);
   };
-
-  /*Товары в корзине - кладутся, фильтр одинаковых. Если уже есть такой товар, он не добавляется в корзину. */
+  //CART-PAGE. Добавление заказов в корзину. Повторное добавление невозможно.
   const onSaveOrderItemHandler = (item) => {
     let isInArray = false;
     if (orders.length > 0) {
@@ -67,27 +73,25 @@ export default function App() {
       });
     }
   };
-  // console.log(orders);
-
-  /*Удалить заказ из корзины */
+  //CART. Удаление заказа из корзины
   const deleteOrderHandler = (order) => {
     setOrders(orders.filter((el) => el.id !== order.id));
   };
-  const deleteFavItemHandler = (favItem) => {
-    setFavItems(favItems.filter((el) => el.id !== favItem.id));
-  };
-  /*Кол-во фаворитов*/
-  const onSaveLikesNumberHandler = (data) => {
-    setLikes((prevState) => {
-      return prevState + data;
+  //CART. Передача данных по заказам.
+  const orderedGoodsHandler = (goods, numberOfOrders, total) => {
+    setOrderedGoods((prev) => {
+      return [
+        ...prev,
+        { goods: goods, numberOfOrders: numberOfOrders, total: total },
+      ];
     });
   };
+  //FAVs. Добавление товаров в фавориты.
   const onSaveFavItemsHandler = (value, item) => {
     let isInArray = false;
     if (favItems.length > 0) {
       favItems.forEach((el) => {
         if (el.id === item.id) {
-          console.log("oups");
           isInArray = true;
         }
       });
@@ -97,79 +101,55 @@ export default function App() {
         return [...prev, item];
       });
     }
-    console.log(favItems);
 
     if (!value) {
       setFavItems(favItems.filter((el) => el.id !== item.id));
     }
   };
-  /*Выбранная категория товара*/
+  //FAVs. Удаление товара из фаворитов
+  const deleteFavItemHandler = (favItem) => {
+    setFavItems(favItems.filter((el) => el.id !== favItem.id));
+  };
+  //HEADER. FAVs. Подсчет количества фаворитов в хэдере
+  const onSaveLikesNumberHandler = (data) => {
+    setLikes((prevState) => {
+      return prevState + data;
+    });
+  };
+  //Выбирается категория товара
   const categoryHandler = (categoryItem, rusCategory) => {
     setCategory(categoryItem);
     setRusCategory(rusCategory);
-    // setBurgerMenuBtnIsClicked(true);
-    // setFilterByPriceBtn(false);
   };
-
-  /*Статус кнопки входа / выхода в систему */
+  //HEADER. LOGIN. Смена статуса кнопки "вход-выход" в систему
   const loginBtnStateHandler = () => {
     setLoginBtnState((loginBtnState) => !loginBtnState);
   };
-
-  //Статус: пользователь в системе или нет
+  //HEADER. LOGIN. Статус: пользователь в системе или нет
   const loginStatusHandler = (loginStatus) => {
     setLoggedIn(loginStatus);
   };
-
+  //HEADER. SEARCH-BAR. Строка поиска. Ввод и вывод текста.
   const inputTextHandler = (input, rusCategory) => {
     setCategory(input);
     setRusCategory(rusCategory);
   };
-
-  //Выход из системы
+  //HEADER. LOGIN. Выход из системы по нажатию на кнопку "выйти из системы"
   const logoutHandler = () => {
     setLoginBtnState((loginBtnState) => !loginBtnState);
     localStorage.clear();
     window.location.reload();
     setLoggedIn(false);
   };
-
+  //По нажатию на товар - модальное окно. Показывается полное описание товара.
   const showFullItemHandler = (item, value) => {
     setShowFullItem(value);
     setItemChosen(item);
-    console.log(item);
-  };
-
-  const openCartHandler = () => {
-    setCartIsOpened((cartIsOpened) => !cartIsOpened);
-    setShowHomePage(false);
-    setShowFavPage(false);
-    // setFavItemsBtnState(false);
-  };
-
-  const showHomePageHandler = (event, value) => {
-    event.preventDefault();
-    setShowHomePage(value);
-    setCartIsOpened(false);
-    setShowFavPage(false);
-    setBurgerMenuBtnIsClicked(true);
-  };
-
-  const showFavPageHandler = (event, value) => {
-    event.preventDefault();
-    setShowFavPage(value);
-    setCartIsOpened(false);
-    setShowHomePage(false);
+    
+  console.log(item);
   };
   return (
-
-
     <div>
-
-
-
-
-
       <Header
         loggedIn={loggedIn}
         setLoginStatus={loginStatusHandler}
@@ -180,76 +160,110 @@ export default function App() {
         likes={likes}
         orders={orders}
         burgerBtnStateHandler={burgerBtnStateHandler}
-        cartIsOpenedState={openCartHandler}
-        showHomePageHandler={showHomePageHandler}
         setFavItemsBtnState={setFavItemsBtnState}
         favItemsBtnState={favItemsBtnState}
         favItems={favItems}
       />
+      <div className="main">
+        <SliderCarousel />
+        <div className="main-container">
+          {/* Переходы между страницами */}
+          <Routes>
+            {/* Main */}
+            <Route
+              path="home"
+              element={
+                <Items
+                  category={category}
+                  rusCategory={rusCategory}
+                  onSaveLikesNumber={onSaveLikesNumberHandler}
+                  onSaveOrderItem={onSaveOrderItemHandler}
+                  showFullItemHandler={showFullItemHandler}
+                  showFullItem={showFullItem}
+                  onSaveFavItems={onSaveFavItemsHandler}
+                  burgerMenuBtnIsClicked={burgerMenuBtnIsClicked}
+                  filterByPriceBtn={filterByPriceBtn}
+                  setFilterByPriceBtn={setFilterByPriceBtn}
+                  setBurgerMenuBtnIsClicked={setBurgerMenuBtnIsClicked}
+                />
+              }
+            />
+            {/* Basket */}
+            <Route
+              path="/cart"
+              element={
+                <div>
+                  <Cart
+                    orders={orders}
+                    deleteOrder={deleteOrderHandler}
+                    setOrders={setOrders}
+                    setSubmitBtn={setSubmitBtn}
+                    submitBtn={submitBtn}
+                    saveOrderedGoods={orderedGoodsHandler}
+                    orderedGoods={orderedGoods}
+                    showFullItemHandler={showFullItemHandler}
+                  />
+                </div>
+              }
+            />
+            {/* Favourites */}
+            <Route
+              path="/favourites"
+              element={
+                <FavouritesPage
+                  deleteFavItemHandler={deleteFavItemHandler}
+                  onSaveOrderItemHandler={onSaveOrderItemHandler}
+                  favItems={favItems}
+                  showFullItemHandler={showFullItemHandler}
+                />
+              }
+            />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/our-partners" element={<OurPartners />} />
+            <Route
+              path="/become-our-partner"
+              element={<HowToBecomeOurPartner />}
+            />
+            <Route path="/to-order" element={<HowToOrder />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/delivery" element={<Delivery />} />
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/return-the-good" element={<HowToReturnTheGood />} />
+          </Routes>
+        </div>
+      </div>
 
-      {showFavPage && (
-        <FavouritesPage
-          deleteFavItemHandler={deleteFavItemHandler}
-          onSaveOrderItemHandler={onSaveOrderItemHandler}
-          favItems={favItems}
-        />
-      )}
+      {/* Кнопки */}
       {favItemsBtnState && (
         <Favourites
           onSaveOrderItemHandler={onSaveOrderItemHandler}
-          setShowFavPage={showFavPageHandler}
           favItems={favItems}
           deleteFavItemHandler={deleteFavItemHandler}
         />
       )}
-      {cartIsOpened && (
-        <Cart
-          orders={orders}
-          deleteOrder={deleteOrderHandler}
-          setOrders={setOrders}
-          setSubmitBtn={setSubmitBtn}
-          submitBtn={submitBtn}
+
+      {burgerBtnState && (
+        <BurgerMenu
+          onGetCategory={categoryHandler}
+          burgerBtnStateHandler={burgerBtnStateHandler}
+          burgerMenuIsOpened={burgerMenuIsOpened}
         />
       )}
-      {showHomePage && (
-        <div>
-          <SliderCarousel />
-          <Items
-            category={category}
-            rusCategory={rusCategory}
-            onSaveLikesNumber={onSaveLikesNumberHandler}
-            onSaveOrderItem={onSaveOrderItemHandler}
-            showFullItemHandler={showFullItemHandler}
-            showFullItem={showFullItem}
-            onSaveFavItems={onSaveFavItemsHandler}
-            burgerMenuBtnIsClicked={burgerMenuBtnIsClicked}
-            filterByPriceBtn={filterByPriceBtn}
-            setFilterByPriceBtn={setFilterByPriceBtn}
-            setBurgerMenuBtnIsClicked={setBurgerMenuBtnIsClicked}
-          />
-          {burgerBtnState && (
-            <BurgerMenu
-              onGetCategory={categoryHandler}
-              burgerBtnStateHandler={burgerBtnStateHandler}
-              burgerMenuIsOpened={burgerMenuIsOpened}
-            />
-          )}
 
-          {showFullItem && (
-            <FullItem
-              itemChosen={itemChosen}
-              showFullItemHandler={showFullItemHandler}
-            />
-          )}
-
-          {!loggedIn && loginBtnState && (
-            <Login
-              getLoginStatus={loginStatusHandler}
-              getLoginBtnState={loginBtnStateHandler}
-            />
-          )}
-        </div>
+      {showFullItem && (
+        <FullItem
+          itemChosen={itemChosen}
+          showFullItemHandler={showFullItemHandler}
+        />
       )}
+
+      {!loggedIn && loginBtnState && (
+        <Login
+          getLoginStatus={loginStatusHandler}
+          getLoginBtnState={loginBtnStateHandler}
+        />
+      )}
+
       <Footer />
     </div>
   );

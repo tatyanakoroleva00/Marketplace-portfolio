@@ -7,3 +7,6 @@ body {
     min-height: 100vh;
     position: relative;
 }
+.fon {
+    background-color: blue;
+}

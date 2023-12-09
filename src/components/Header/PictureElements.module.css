@@ -13,6 +13,10 @@
     align-items: center;
     cursor: pointer;
 }
+.link {
+    text-decoration: none;
+    color: white;
+}
 
 .pic-element__login span:first-child {
     font-size: 2.5rem;

@@ -20,16 +20,15 @@
     font-size: 1.8rem;
     margin-bottom: 1rem;
 }
-.link {
+.fav-page-link {
     color: blue;
     font-weight: bold;
     text-align: center;
     opacity: 1;
     cursor: pointer;
-    margin-bottom: 1rem;
-    
+    margin-bottom: 2rem;
 }
-.link:hover {
+.fav-page-link:hover {
     color: rgb(8, 8, 191);
     opacity: 1;
 }

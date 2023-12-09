@@ -3,6 +3,7 @@ import styles from "./HeaderBottom.module.css";
 import Burger from "./Burger";
 import SearchBar from "./SearchBar";
 import PictureElements from "./PictureElements";
+import { Link } from "react-router-dom";
 export default function HeaderBottom({
   burgerBtnStateHandler,
   logoutHandler,
@@ -11,7 +12,7 @@ export default function HeaderBottom({
   likes,
   orders,
   onGetClickedCartStatus,
-  loggedIn, setLoginStatus, cartIsOpenedState, showHomePageHandler, setFavItemsBtnState, favItemBtnState, favItems}) {
+  loggedIn, setLoginStatus, cartIsOpenedState, setFavItemsBtnState, favItemBtnState, favItems}) {
   return (
     <div className={styles["header__bottom"]}>
       <div
@@ -20,9 +21,7 @@ export default function HeaderBottom({
         <div className={styles["nav-element__burger"]}>
           <Burger burgerBtnStateHandler={burgerBtnStateHandler} />
         </div>
-        <a className={styles["nav-element__marketplace"]} onClick={event => showHomePageHandler(event, true)}  href="/">
-          Market Place
-        </a>
+        <Link to="/home" className={styles["nav-element__marketplace"]} >Market Place</Link>
       </div>
 
       <SearchBar onGetInputText={onGetInputText} />

@@ -5,7 +5,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: relative;
     padding-bottom: 3rem;
-    min-height: 28rem;
+    min-height: 30rem;
 }
 .main-container {
     display: flex;

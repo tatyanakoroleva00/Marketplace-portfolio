@@ -5,7 +5,7 @@ import { BsCart3 } from "react-icons/bs";
 
 export default function FavouriteItem({favItem, deleteFavItemHandler, index, onSaveOrderItemHandler}) {
   return (
-    <div>
+    <div className={styles['fav-items-table']}>
     {index < 4 &&  <div className={styles['fav-item-card']}>
         <div className={styles['left-col']}>
             <img className={styles['fav-item-img']} src={favItem.img} alt={favItem.img}/>

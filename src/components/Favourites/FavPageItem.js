@@ -5,11 +5,11 @@ import { GoTrash } from "react-icons/go";
 export default function FavPageItem({
   item,
   onSaveOrderItemHandler,
-  deleteFavItemHandler
+  deleteFavItemHandler, showFullItemHandler
 }) {
   return (
     <div className={styles.item}>
-      <img className={styles["item-image"]} src={item.img} alt={item.img} />
+      <img className={styles["item-image"]} src={item.img} alt={item.img} onClick={() => showFullItemHandler(item, true)}/>
       <div className={styles["item-content"]}>
         <p className={styles.price}>{item.price} &#8381;</p>
         <p className={styles["item-description"]}>{item.description}</p>

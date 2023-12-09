@@ -1,9 +1,12 @@
 import React from "react";
 import styles from "./PictureElements.module.css";
+import { Link } from "react-router-dom";
 export default function PictureElements({
   logoutHandler,
   getLoginBtnState,
-  orders, cartIsOpenedState, setFavItemsBtnState, favItems
+  orders,
+  setFavItemsBtnState,
+  favItems,
 }) {
   const userIsLogged = localStorage.getItem("userIsLogged");
   const numberOfItemsInTheCart = orders.length;
@@ -32,24 +35,28 @@ export default function PictureElements({
           </div>
         )}
       </div>
-      <div
-        onClick={()=>cartIsOpenedState()}
-        className={styles["pic-element__shopping-cart"]}
-      >
-        <div className={styles["pic-element"]}>
-          <span className="material-symbols-outlined">shopping_cart</span>
-          <span className={styles["picture-name"]}>Корзина</span>
-          {numberOfItemsInTheCart !== 0 && (
-            <input
-              className={styles["items-quantity"]}
-              value={numberOfItemsInTheCart}
-              type="text"
-              disabled
-            />
-          )}
-        </div>
+      <div className={styles["pic-element__shopping-cart"]}>
+        <Link to="/cart" className={styles.link}>
+          <div className={styles["pic-element"]}>
+            <span className="material-symbols-outlined">shopping_cart</span>
+            <span className={styles["picture-name"]}>Корзина</span>
+            {numberOfItemsInTheCart !== 0 && (
+              <input
+                className={styles["items-quantity"]}
+                value={numberOfItemsInTheCart}
+                type="text"
+                disabled
+              />
+            )}
+          </div>
+        </Link>
       </div>
-      <div className={styles["pic-element__favourite"]} onClick={()=>setFavItemsBtnState(favItemBtnState => !favItemBtnState)}>
+      <div
+        className={styles["pic-element__favourite"]}
+        onClick={() =>
+          setFavItemsBtnState((favItemBtnState) => !favItemBtnState)
+        }
+      >
         <div
           className={`${styles["pic-element"]} ${styles["favourite-element"]}`}
         >

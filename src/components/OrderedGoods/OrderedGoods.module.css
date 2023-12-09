@@ -1,0 +1,8 @@
+.container {
+    width: 90rem;
+    background-color: red;
+    margin: 0 auto;
+}
+.goods-table {
+    width: 50rem;
+}

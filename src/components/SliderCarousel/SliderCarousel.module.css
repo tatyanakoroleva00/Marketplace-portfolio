@@ -5,10 +5,12 @@
 .image2 {
     position: absolute;
     top: -25rem;
+    
 }
 .image3 {
     position: absolute;
     top: -30rem;
+    
 }
 .capture {
     color: rgba(255, 255, 255, 0.839);

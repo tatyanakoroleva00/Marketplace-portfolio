@@ -21,8 +21,7 @@ export default function ItemsQuantity({
         type="number"
         value={count}
         max={quantity}
-        min={0}
-        // defaultValue={count}
+        min={1}
       />
       <span
         className={`material-symbols-outlined ${styles["add-btn"]}`}

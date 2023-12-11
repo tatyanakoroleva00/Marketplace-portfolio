@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Item.module.css";
-import like from "../../../assets/images/like.png";
+import like from "../../assets/images/like.png";
 export default function Item(props) {
   const [favClicked, setFavClicked] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);

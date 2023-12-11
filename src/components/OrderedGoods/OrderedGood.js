@@ -20,11 +20,12 @@ export default function OrderedGood({ good, number }) {
   }
   arr2 = arr2.join(', ');
   return (
-    <table className={styles.item}>
-      <tr>
-        <th style={{width: '10%'}}></th>
-        <th style={{width: '90%'}}></th>
-      </tr>
+      <table style={{width: '100%'}}>
+      <colgroup>
+        <col span="1" style={{width: '10%'}}></col>
+        <col span="1" style={{width: '90%'}}></col>
+      </colgroup>
+      <tbody>
       <tr className={styles.line}>
         <td className={styles["order-number"]}>Заказ # {number}</td>
       </tr>
@@ -44,6 +45,7 @@ export default function OrderedGood({ good, number }) {
         <td className={styles.title}>Итог :</td>
         <td>{good.total} &#8381;</td>
       </tr>
+      </tbody>
     </table>
   );
 }

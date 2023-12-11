@@ -1,7 +1,7 @@
 import React from "react";
 import Item from "./Item";
 import styles from "./Items.module.css";
-import { listedItems } from "../../../assets/Data/listedItems";
+import { listedItems } from "../../assets/Data/listedItems";
 
 export default function Items({
   category,
@@ -16,7 +16,7 @@ export default function Items({
 
   return (
     <div className="main">
-      <div className="main-container">
+      <div className={styles['main-container']}>
         <p className={styles["category-name"]}>{rusCategory}</p>
           <div className={styles.items}>
           {filteredItems.map((elem) => (

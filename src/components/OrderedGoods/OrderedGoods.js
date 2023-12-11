@@ -8,7 +8,7 @@ export default function OrderedGoods({ orderedGoods }) {
       <div className={styles["goods-table-wrapper"]}>
       {orderedGoods.length > 0 && (
         <div>
-      <p className={styles.title}>Ваши заказы:</p>
+      <p className={styles.title}>Ваши заказы</p>
           <div className={styles["goods-table"]}>
             
             {orderedGoods && orderedGoods.map((good, index) => (

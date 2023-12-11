@@ -4,7 +4,6 @@ import FavouriteItem from "./FavouriteItem";
 import { Link } from "react-router-dom";
 
 export default function Favourites({ favItems, deleteFavItemHandler, setShowFavPage, onSaveOrderItemHandler }) {
-  // console.log(favItems);
   return (
     <div className={styles["favourite-items-modal-window"]}>
       <div className={styles["favourite-items-container"]}>
@@ -20,7 +19,7 @@ export default function Favourites({ favItems, deleteFavItemHandler, setShowFavP
           </div>
             {favItems.map((elem, index) => (
               <FavouriteItem
-                key={favItems.id}
+                key={elem.id}
                 index={index}
                 deleteFavItemHandler={deleteFavItemHandler}
                 favItem={elem}

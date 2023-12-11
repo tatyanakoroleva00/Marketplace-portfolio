@@ -74,12 +74,8 @@ export default function Cart({
   return (
     <div className={styles["cart-wrapper"]}>
       <div className={styles.cart}>
-
-
-
         <div className={styles["cart-items"]}>
           <p className={styles["cart-title"]}>Корзина</p>
-
           {!submitBtn && (
             <div>
               <div>

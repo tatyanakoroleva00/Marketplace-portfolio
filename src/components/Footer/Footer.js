@@ -8,7 +8,7 @@ export default function Footer() {
       <div className={styles["footer-inner"]}>
         <div className={styles["info-column"]}>
             <img className={styles.qrcode} src={qrcode} alt={qrcode} />
-            <p>Отсканируйте qr-код <br /> и перейдите в приложение</p>
+            <p className={styles['qrcode-text']}>Отсканируйте qr-код <br /> и перейдите в приложение</p>
         </div>
         <ul className={styles["info-column"]}>
           <li className={styles['title']}>Market Place</li>

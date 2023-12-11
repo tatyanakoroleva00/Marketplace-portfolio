@@ -30,9 +30,19 @@
     .items {
         grid-template-columns: repeat(2, 1fr);
     }
+    .category-name {
+        font-weight: bold; 
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
 }
 @media screen and (max-width: 424px) {
     .items {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .category-name {
+        font-weight: bold; 
+        font-size: 2rem;
+        margin-bottom: 1rem;
     }
 }

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
+import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/Registration/Login";
 import BurgerMenu from "./components/BurgerMenu/BurgerMenu";
-import "./App.css";
 import SliderCarousel from "./components/SliderCarousel/SliderCarousel";
-import Items from "./components/Main/Items/Items";
-import FullItem from "./components/Main/Items/FullItem";
+import Items from "./components/Items/Items";
+import FullItem from "./components/Items/FullItem";
 import Favourites from "./components/Favourites/Favourites";
 import FavouritesPage from "./components/Favourites/FavouritesPage";
 import { Routes, Route } from "react-router-dom";
@@ -180,7 +180,6 @@ export default function App() {
         <div className="main-container">
           {/* Переходы между страницами */}
           <Routes>
-            {/* Main */}
             <Route
               path="/"
               element={

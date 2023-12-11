@@ -8,7 +8,7 @@ import styles from "./SliderCarousel.module.css";
 export default function SliderCarousel() {
   let slideStyle = { height: "20rem", marginTop: "2rem", marginBottom: "2rem", overflow: "hidden" };
   return (
-    <Carousel interval={15000} wrap={true}>
+    <Carousel className={styles.slider} interval={15000} wrap={true}>
       <Carousel.Item  style={slideStyle}>
         <img className={`${styles.image1} ${["d-block w-100"]}`} src={slide1} alt="First slide" />
         <p className={`${styles.capture} ${styles.capture1}`}>У нас только натуральные продукты</p>

@@ -1,0 +1,19 @@
+.title {
+    font-weight: bold;
+    padding-bottom: 0.7rem;
+}
+.order-number {
+    font-weight: bold;
+    text-decoration: underline;
+    padding-bottom: 1rem;
+}
+.item {
+    margin-bottom: 2rem;
+
+}
+td {
+    padding: 10px;
+}
+.description {
+    line-height: 2rem;
+}

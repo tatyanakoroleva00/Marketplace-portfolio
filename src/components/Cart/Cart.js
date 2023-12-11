@@ -56,8 +56,18 @@ export default function Cart({
       setSubmitBtn(false);
     } else {
       setSubmitBtn(true);
-      saveOrderedGoods(orders, numberOfOrders, total);
+      const currentDate = new Date();
+      let dateObj = currentDate;
+      let month = dateObj.toLocaleString("ru-RU", { month: "long" });
+      month = month.substr(0, month.length - 1);
+      month = month + "я";
+      let day = dateObj.toLocaleString("ru-RU", { day: "2-digit" });
+      let year = dateObj.getFullYear();
+      let dateStr = {day: day, month: month, year: year};
+      const id = Math.random().toFixed(3);
+      saveOrderedGoods(id, orders, numberOfOrders, total, dateStr);
       setOrders([]);
+      window.location.reload();
     }
   };
 

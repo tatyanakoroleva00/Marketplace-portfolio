@@ -19,12 +19,16 @@ import HowToOrder from "./components/Footer/links/HowToOrder";
 import HowToReturnTheGood from "./components/Footer/links/HowToReturnTheGood";
 import OurPartners from "./components/Footer/links/OurPartners";
 import Payment from "./components/Footer/links/Payment";
+import OrderedGoods from "./components/OrderedGoods/OrderedGoods";
 
 const ordersFromLocalStorage = JSON.parse(
   localStorage.getItem("orders") || "[]"
 );
 const favouritesFromLocalStorage = JSON.parse(
   localStorage.getItem("favourites") || "[]"
+);
+const orderedGoodsFromLocalStorage = JSON.parse(
+  localStorage.getItem("orderedGoods") || "[]"
 );
 
 export default function App() {
@@ -43,13 +47,14 @@ export default function App() {
   const [submitBtn, setSubmitBtn] = useState(false);
   const [burgerMenuBtnIsClicked, setBurgerMenuBtnIsClicked] = useState(true);
   const [filterByPriceBtn, setFilterByPriceBtn] = useState(false);
-  const [orderedGoods, setOrderedGoods] = useState([]);
+  const [orderedGoods, setOrderedGoods] = useState(orderedGoodsFromLocalStorage);
   /**************************************************FUNCTIONS *********************************/
   /*Авто-изменение данных в хранилище при изменении кол-ва заказов или фаворитов */
   useEffect(() => {
     localStorage.setItem("orders", JSON.stringify(orders));
     localStorage.setItem("favourites", JSON.stringify(favItems));
-  }, [orders, favItems]);
+    localStorage.setItem("orderedGoods", JSON.stringify(orderedGoods));
+  }, [orders, favItems, orderedGoods]);
   //БУРГЕР. Открыть бургер-меню
   const burgerBtnStateHandler = () => {
     setBurgerBtnState((burgerBtn) => !burgerBtn);
@@ -78,14 +83,22 @@ export default function App() {
     setOrders(orders.filter((el) => el.id !== order.id));
   };
   //CART. Передача данных по заказам.
-  const orderedGoodsHandler = (goods, numberOfOrders, total) => {
-    setOrderedGoods((prev) => {
-      return [
-        ...prev,
-        { goods: goods, numberOfOrders: numberOfOrders, total: total },
-      ];
-    });
+  const orderedGoodsHandler = (id, goods, numberOfOrders, total, date) => {
+
+
+    if (orderedGoods === null) {
+      setOrderedGoods([{ id: id, goods: goods, numberOfOrders: numberOfOrders, total: total, date: date}])
+    } else {
+      setOrderedGoods((prev) => {
+          return [
+            { id: id, goods: goods, numberOfOrders: numberOfOrders, total: total, date: date}, 
+            ...prev,
+          ];
+    })
+   
+    // console.log(orderedGoods);
   };
+}
   //FAVs. Добавление товаров в фавориты.
   const onSaveFavItemsHandler = (value, item) => {
     let isInArray = false;
@@ -145,8 +158,6 @@ export default function App() {
   const showFullItemHandler = (item, value) => {
     setShowFullItem(value);
     setItemChosen(item);
-    
-  console.log(item);
   };
   return (
     <div>
@@ -171,7 +182,7 @@ export default function App() {
           <Routes>
             {/* Main */}
             <Route
-              path="home"
+              path="/"
               element={
                 <Items
                   category={category}
@@ -217,6 +228,8 @@ export default function App() {
                   showFullItemHandler={showFullItemHandler}
                 />
               }
+            />
+            <Route path="/orders" element={<OrderedGoods orderedGoods={orderedGoods} />}
             />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/our-partners" element={<OurPartners />} />

@@ -9,6 +9,7 @@
     color: black;
     text-align: center;
     border: 1px solid gray;
+    background-color: white;
 }
 .subtr-btn, .add-btn {
     border-radius: 1px solid rgba(128, 128, 128, 0.066);

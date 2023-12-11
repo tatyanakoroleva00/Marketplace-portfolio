@@ -16,13 +16,7 @@ export default function ItemsQuantity({
       >
         do_not_disturb_on
       </span>
-      <input
-        className={styles.quantity}
-        type="number"
-        value={count}
-        max={quantity}
-        min={1}
-      />
+      <span className={styles.quantity}>{count}</span>
       <span
         className={`material-symbols-outlined ${styles["add-btn"]}`}
         onClick={() => increase(id)}

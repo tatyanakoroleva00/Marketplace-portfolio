@@ -5,7 +5,7 @@ export default function Item(props) {
   const [favClicked, setFavClicked] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const favClickHandler = (item) => {
-    setFavClicked(favClicked => !favClicked);
+    setFavClicked((favClicked) => !favClicked);
     if (favClicked === true) {
       props.onSaveLikesNumber(1);
       props.onSaveFavItems(true, props.item);
@@ -13,7 +13,6 @@ export default function Item(props) {
       props.onSaveLikesNumber(-1);
       props.onSaveFavItems(false, props.item);
     }
-    
   };
 
   let description = props.description;
@@ -27,7 +26,7 @@ export default function Item(props) {
     props.onSaveOrderItem(props.item);
   };
 
-  const userIslogged = localStorage.getItem('userIsLogged');
+  const userIslogged = localStorage.getItem("userIsLogged");
 
   return (
     <div className={styles["item-card"]}>
@@ -42,38 +41,44 @@ export default function Item(props) {
         </div>
       </div>
       <div className={styles["item-middle"]}>
-        <p className={styles.price}>{props.price} &#8381;</p>
-        {userIslogged && (
-          <div>
-        {favClicked ? (
-          <span
-            onClick={() => favClickHandler(props.item)}
-            className={`material-symbols-outlined ${styles.favourite}`}
-          >
-            favorite
-          </span>
-        ) : (
-          <img
-            onClick={() => favClickHandler(props.item)}
-            className={styles["clicked-fav"]}
-            src={like}
-            alt={like}
-          ></img>
-        )}
-        </div>)}
-        <p className={styles.description}>{description}</p>
-      </div>
-      <div className={styles["item-bottom"]}>
-          {userIslogged && <button
-          onClick={submitHandler}
-          className={`${styles["submit-btn"]} ${
-            isSubmitted ? styles.submitted : styles.default
-          }`}
-        >
-          {!isSubmitted ? <span>Добавить</span> : <span>В корзине</span>}
-          <span className="material-symbols-outlined">shopping_cart</span>
-        </button>}
-        
+        <div className={styles["price-and-fav"]}>
+          <p className={styles.price}>{props.price} &#8381;</p>
+          {userIslogged && (
+            <div>
+              {favClicked ? (
+                <span
+                  onClick={() => favClickHandler(props.item)}
+                  className={`material-symbols-outlined ${styles.favourite}`}
+                >
+                  favorite
+                </span>
+              ) : (
+                <img
+                  onClick={() => favClickHandler(props.item)}
+                  className={styles["clicked-fav"]}
+                  src={like}
+                  alt={like}
+                ></img>
+              )}
+            </div>
+          )}
+        </div>
+
+        <div className={styles.description}>{description}</div>
+
+        <div className={styles["item-bottom"]}>
+          {userIslogged && (
+            <button
+              onClick={submitHandler}
+              className={`${styles["submit-btn"]} ${
+                isSubmitted ? styles.submitted : styles.default
+              }`}
+            >
+              {!isSubmitted ? <span>Добавить</span> : <span>В корзине</span>}
+              <span className="material-symbols-outlined">shopping_cart</span>
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

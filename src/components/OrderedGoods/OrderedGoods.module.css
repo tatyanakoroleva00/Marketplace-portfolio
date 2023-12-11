@@ -1,8 +1,30 @@
-.container {
-    width: 90rem;
-    background-color: red;
+.goods-wrapper {
+    box-sizing: border-box;
+    max-height: 50rem;
+    overflow: auto;
+    width: 100%;
     margin: 0 auto;
+    padding: 1rem 2rem 1rem 1rem;
+    overflow-x: hidden;
+    background-color: rgba(255, 166, 0, 0.091);
+    border-radius: 15px;
+    margin-top: 1rem;
 }
-.goods-table {
-    width: 50rem;
+.goods-table-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    background-color: rgba(255, 166, 0, 0.091);
+    border-radius: 15px;
+}
+.goods-table{
+    width: 100%;
+}
+
+
+.title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }

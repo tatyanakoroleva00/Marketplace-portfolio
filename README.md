@@ -8,7 +8,7 @@ password: 123
 
 By this moment, what is done: 
 
-LOG IN FORM (
+LOG IN FORM 
   1. Password and Email verification
   2. Error Message
      

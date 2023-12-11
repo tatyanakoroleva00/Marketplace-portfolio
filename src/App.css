@@ -1,5 +1,4 @@
 .main {
-    box-sizing: border-box;
     width: 100%;
     background: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -8,21 +7,14 @@
     min-height: 30rem;
 }
 .main-container {
-    display: flex;
-    flex-direction: column;
-    width: 90rem;
+    max-width: 90rem;
     margin: 0 auto;
 }
 
-@media screen and (max-width: 471px) {
-    .main {
-        display: flex;
-        flex-wrap: wrap;
+@media screen and (max-width: 1491px) {
+    .main-container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
-}
-@media screen and (min-width: 472px) and (max-width: 1476px) {
-    .main {
-        display: flex;
-        flex-wrap: wrap;
-    }
+
 }

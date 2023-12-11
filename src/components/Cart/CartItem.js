@@ -3,7 +3,6 @@ import styles from "./CartItem.module.css";
 import ItemsQuantity from "./ItemsQuantity";
 import {GoTrash} from 'react-icons/go';
 export default function CartItem({ item, deleteOrder, increase, count, quantity, decrease, showFullItemHandler}) {
-  console.log(item);
   return (
     <div className={styles["cart-item-wrap"]}>
       <div className={styles["left-col"]}>

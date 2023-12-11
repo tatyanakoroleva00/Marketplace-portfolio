@@ -1,6 +1,7 @@
 .header__search-bar {
     position: relative;
     order: 2;
+    width: 50%;
 }
 .search {
     position: absolute;
@@ -17,7 +18,7 @@
     border-radius: 2.5rem;
     border: none;
     cursor: text;
-    width: 50rem;
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.42);
     outline: none;
     font-size: 1rem;

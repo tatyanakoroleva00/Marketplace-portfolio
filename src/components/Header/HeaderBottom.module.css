@@ -17,9 +17,11 @@
     font-style: none;
     text-decoration: none;
     font-weight: 500;
-
+    transition: 500ms;
 }
-
+.nav-element__marketplace:hover {
+    opacity: 1;
+}
 @media screen and (min-width: 600px) and (max-width: 1200px) {
     .header__bottom {
         justify-content: space-between;

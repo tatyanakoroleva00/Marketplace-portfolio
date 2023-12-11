@@ -21,7 +21,7 @@ export default function HeaderBottom({
         <div className={styles["nav-element__burger"]}>
           <Burger burgerBtnStateHandler={burgerBtnStateHandler} />
         </div>
-        <Link to="/home" className={styles["nav-element__marketplace"]} >Market Place</Link>
+        <Link to="/" className={styles["nav-element__marketplace"]} >Market Place</Link>
       </div>
 
       <SearchBar onGetInputText={onGetInputText} />

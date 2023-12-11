@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./PictureElements.module.css";
 import { Link } from "react-router-dom";
+import { SlPresent } from "react-icons/sl";
 export default function PictureElements({
   logoutHandler,
   getLoginBtnState,
@@ -16,24 +17,13 @@ export default function PictureElements({
     <div
       className={`${styles["header__pic-elements"]} ${styles["pic-elements"]}`}
     >
-      <div
-        className={styles["pic-element__login"]}
-        onClick={() => getLoginBtnState()}
-      >
-        {userIsLogged ? (
-          <div
-            className={styles["pic-element"]}
-            onClick={() => logoutHandler()}
-          >
-            <span className="material-symbols-outlined">logout</span>
-            <span className={styles["picture-name"]}>Выйти</span>
-          </div>
-        ) : (
-          <div className={styles["pic-element"]}>
-            <span className="material-symbols-outlined">person</span>
-            <span className={styles["picture-name"]}>Войти</span>
-          </div>
-        )}
+      <div className={styles.orders}>
+      <Link to="/orders" className={styles.link}>
+      <div className={styles["pic-element"]}>
+        <SlPresent size={37} />
+        <span className={styles["picture-name"]}>Заказы</span>
+        </div>
+        </Link>
       </div>
       <div className={styles["pic-element__shopping-cart"]}>
         <Link to="/cart" className={styles.link}>
@@ -75,6 +65,25 @@ export default function PictureElements({
             </span>
           )}
         </div>
+      </div>
+      <div
+        className={styles["pic-element__login"]}
+        onClick={() => getLoginBtnState()}
+      >
+        {userIsLogged ? (
+          <div
+            className={styles["pic-element"]}
+            onClick={() => logoutHandler()}
+          >
+            <span className="material-symbols-outlined">logout</span>
+            <span className={styles["picture-name"]}>Выйти</span>
+          </div>
+        ) : (
+          <div className={styles["pic-element"]}>
+            <span className="material-symbols-outlined">person</span>
+            <span className={styles["picture-name"]}>Войти</span>
+          </div>
+        )}
       </div>
     </div>
   );

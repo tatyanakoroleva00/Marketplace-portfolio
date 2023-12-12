@@ -7,7 +7,7 @@
 }
 .header__menu {
     gap: 2rem;
-    padding-top: 1.6rem;
+    padding-top: 0.6rem;
     padding-bottom: 1.6rem;
 }
 .menu__item {
@@ -26,4 +26,10 @@
 .username {
     color: rgba(0, 0, 0, 0.523);
     font-weight: bold;
+}
+
+@media screen and (max-width: 1460px) {
+    .header__top {
+        display: none;
+    }
 }

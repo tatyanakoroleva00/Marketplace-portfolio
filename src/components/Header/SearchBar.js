@@ -1,22 +1,20 @@
 import React, {useState} from "react";
 import styles from "./SearchBar.module.css";
 import List from "./List";
-export default function SearchBar({onGetInputText}) {
-  const [listOpened, setListOpened] = useState(false);
+export default function SearchBar({onGetInputText, listOpened, listOpenedHandler}) {
   const [enteredValue, setEnteredValue] = useState('');
 
   const onChangeInputHandler = (event) => {
     const value = event.target.value.toLowerCase();
     setEnteredValue(value);
     if(enteredValue.length === 0) {
-      setListOpened(true);
+      listOpenedHandler(true);
     }
-    
   };
 
   const deleteInputHandler = () => {
     setEnteredValue('');
-    setListOpened(false);
+    listOpenedHandler(false);
   };
   return (
       <div className={styles["header__search-bar"]}>
@@ -27,11 +25,11 @@ export default function SearchBar({onGetInputText}) {
           type="text"
           placeholder="Поиск..."
           width={50}
-          onChange={onChangeInputHandler}
+          onChange={(event) => onChangeInputHandler(event)}
           value={enteredValue}
         />
         {listOpened &&  
-        <List input={enteredValue} listOpened={listOpened} onGetInputText={onGetInputText}/>}
+        <List input={enteredValue} listOpened={listOpened} listOpenedHandler={listOpenedHandler} onGetInputText={onGetInputText}/>}
        
       </div>
   );

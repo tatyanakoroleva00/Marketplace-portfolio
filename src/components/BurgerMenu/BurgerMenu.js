@@ -4,10 +4,11 @@ const BurgerMenu = ({ burgerBtnStateHandler, onGetCategory}) => {
   const clickHandler = (event, value, rusCategory) => {
     event.preventDefault();
     onGetCategory(value, rusCategory);
+    burgerBtnStateHandler();
   };
 
   return (
-    <div className={styles["burger-menu-container"]}>
+    <div className={styles["burger-menu-wrapper"]}>
       <div onClick={() => burgerBtnStateHandler()} className={styles["menu-close-btn"]}>
         <span className="material-symbols-outlined">close</span>
       </div>

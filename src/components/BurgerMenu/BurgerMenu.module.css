@@ -1,3 +1,17 @@
+.burger-menu-wrapper {
+    top: 0;
+    left: 0;
+    margin-top: 9.8rem;
+    position: fixed;
+    padding: 2rem 3rem 2rem 1rem;
+    width: 17rem;
+    border: 0.3px solid rgb(224, 224, 224);
+    background-color: white;
+    z-index: 9999;
+    animation-duration: 1s;
+    animation-name: slideIn;
+    transform: scale(1);
+}
 .burger-menu {
     display: flex;
     flex-direction: column;
@@ -16,7 +30,6 @@
     /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(71,9,121,1) 10%, rgba(0,212,255,1) 100%); */
     background: rgba(62, 62, 61, 0.117);
     font-weight: bold;
-
 }
 .burger-menu__link {
     display: flex;
@@ -40,35 +53,6 @@
     font-size: 2rem;
 }
 
-.burger-menu-container {
-    top: 0;
-    left: 0;
-    position: absolute;
-    padding: 2rem 3rem 2rem 1rem;
-    width: 17rem;
-    border: 0.3px solid rgb(224, 224, 224);
-    background-color: white;
-    z-index: 9999;
-    animation-duration: 1s;
-    animation-name: slideIn;
-    transform: scale(1);
-} 
-
-.burger-menu-container {
-    top: 0;
-    left: 0;
-    position: absolute;
-    padding: 2rem 3rem 2rem 1rem;
-    width: 17rem;
-    border: 0.3px solid rgb(224, 224, 224);
-    background-color: white;
-    z-index: 9999;
-    animation-duration: 1s;
-    animation-name: slideIn;
-    transform: scale(1);
-}
-
-
 @keyframes slideIn {
     from {
         left: -100%;
@@ -81,3 +65,14 @@
 }
 
 
+@media screen and (max-width: 1460px) {
+    .burger-menu-wrapper{
+        width: 100vw;
+        height: 100vw;
+        background-color: white;
+        top: 0;
+        left: 0;
+        z-index: 1100;
+        animation: none;
+    }
+}

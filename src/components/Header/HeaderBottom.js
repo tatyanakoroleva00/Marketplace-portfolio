@@ -12,7 +12,15 @@ export default function HeaderBottom({
   likes,
   orders,
   onGetClickedCartStatus,
-  loggedIn, setLoginStatus, cartIsOpenedState, setFavItemsBtnState, favItemBtnState, favItems}) {
+  loggedIn,
+  setLoginStatus,
+  cartIsOpenedState,
+  setFavItemsBtnState,
+  favItemBtnState,
+  favItems,
+  listOpenedHandler, 
+  listOpened
+}) {
   return (
     <div className={styles["header__bottom"]}>
       <div
@@ -21,10 +29,12 @@ export default function HeaderBottom({
         <div className={styles["nav-element__burger"]}>
           <Burger burgerBtnStateHandler={burgerBtnStateHandler} />
         </div>
-        <Link to="/" className={styles["nav-element__marketplace"]} >Market Place</Link>
+        <Link to="/" className={styles["nav-element__marketplace"]}>
+          Market Place
+        </Link>
       </div>
 
-      <SearchBar onGetInputText={onGetInputText} />
+      <SearchBar onGetInputText={onGetInputText} listOpenedHandler={listOpenedHandler} listOpened={listOpened}/>
       <PictureElements
         logoutHandler={logoutHandler}
         setLoginStatus={setLoginStatus}

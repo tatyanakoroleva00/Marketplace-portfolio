@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./PictureElements.module.css";
 import { Link } from "react-router-dom";
 import { SlPresent } from "react-icons/sl";
+import { TbHome2 } from "react-icons/tb";
 export default function PictureElements({
   logoutHandler,
   getLoginBtnState,
@@ -17,10 +18,17 @@ export default function PictureElements({
     <div
       className={`${styles["header__pic-elements"]} ${styles["pic-elements"]}`}
     >
+      <div className={styles['home-element']}>
+        <Link to="/" className={styles.link}>
+          <div className={styles['pic-element']}>
+            <TbHome2 className={styles.home} />
+          </div>
+        </Link>
+      </div>
       <div className={styles.orders}>
       <Link to="/orders" className={styles.link}>
       <div className={styles["pic-element"]}>
-        <SlPresent size={37} />
+        <SlPresent  className={styles.present}/>
         <span className={styles["picture-name"]}>Заказы</span>
         </div>
         </Link>
@@ -28,7 +36,7 @@ export default function PictureElements({
       <div className={styles["pic-element__shopping-cart"]}>
         <Link to="/cart" className={styles.link}>
           <div className={styles["pic-element"]}>
-            <span className="material-symbols-outlined">shopping_cart</span>
+            <span className={`material-symbols-outlined ${styles['shopping-cart']}`}>shopping_cart</span>
             <span className={styles["picture-name"]}>Корзина</span>
             {numberOfItemsInTheCart !== 0 && (
               <input
@@ -50,7 +58,7 @@ export default function PictureElements({
         <div
           className={`${styles["pic-element"]} ${styles["favourite-element"]}`}
         >
-          <span className={`material-symbols-outlined ${styles.favourite}`}>
+          <span className={`material-symbols-outlined ${styles.favourites}`}>
             favorite
           </span>
           <span className={styles["picture-name"]}>Избранное</span>
@@ -75,12 +83,12 @@ export default function PictureElements({
             className={styles["pic-element"]}
             onClick={() => logoutHandler()}
           >
-            <span className="material-symbols-outlined">logout</span>
+            <span className={`material-symbols-outlined ${styles['login-logout']}`}>logout</span>
             <span className={styles["picture-name"]}>Выйти</span>
           </div>
         ) : (
           <div className={styles["pic-element"]}>
-            <span className="material-symbols-outlined">person</span>
+            <span className={`material-symbols-outlined ${styles['login-logout']}`}>person</span>
             <span className={styles["picture-name"]}>Войти</span>
           </div>
         )}

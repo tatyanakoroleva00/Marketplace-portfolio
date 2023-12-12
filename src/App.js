@@ -48,6 +48,7 @@ export default function App() {
   const [burgerMenuBtnIsClicked, setBurgerMenuBtnIsClicked] = useState(true);
   const [filterByPriceBtn, setFilterByPriceBtn] = useState(false);
   const [orderedGoods, setOrderedGoods] = useState(orderedGoodsFromLocalStorage);
+  const [listOpened, setListOpened] = useState(false);
   /**************************************************FUNCTIONS *********************************/
   /*Авто-изменение данных в хранилище при изменении кол-ва заказов или фаворитов */
   useEffect(() => {
@@ -146,6 +147,7 @@ export default function App() {
   const inputTextHandler = (input, rusCategory) => {
     setCategory(input);
     setRusCategory(rusCategory);
+    setListOpened(false);
   };
   //HEADER. LOGIN. Выход из системы по нажатию на кнопку "выйти из системы"
   const logoutHandler = () => {
@@ -158,6 +160,9 @@ export default function App() {
   const showFullItemHandler = (item, value) => {
     setShowFullItem(value);
     setItemChosen(item);
+  };
+  const listOpenedHandler = (result) => {
+    setListOpened(result);
   };
   return (
     <div>
@@ -174,12 +179,28 @@ export default function App() {
         setFavItemsBtnState={setFavItemsBtnState}
         favItemsBtnState={favItemsBtnState}
         favItems={favItems}
+        listOpened={listOpened}
+        listOpenedHandler={listOpenedHandler}
       />
       <div className="main">
         <SliderCarousel />
         <div className="main-container">
           {/* Переходы между страницами */}
           <Routes>
+          <Route index element={<Items
+                  category={category}
+                  rusCategory={rusCategory}
+                  onSaveLikesNumber={onSaveLikesNumberHandler}
+                  onSaveOrderItem={onSaveOrderItemHandler}
+                  showFullItemHandler={showFullItemHandler}
+                  showFullItem={showFullItem}
+                  onSaveFavItems={onSaveFavItemsHandler}
+                  burgerMenuBtnIsClicked={burgerMenuBtnIsClicked}
+                  filterByPriceBtn={filterByPriceBtn}
+                  setFilterByPriceBtn={setFilterByPriceBtn}
+                  setBurgerMenuBtnIsClicked={setBurgerMenuBtnIsClicked}
+                />} />
+            {/* Items */}
             <Route
               path="/"
               element={
@@ -228,6 +249,7 @@ export default function App() {
                 />
               }
             />
+
             <Route path="/orders" element={<OrderedGoods orderedGoods={orderedGoods} />}
             />
             <Route path="/about-us" element={<AboutUs />} />

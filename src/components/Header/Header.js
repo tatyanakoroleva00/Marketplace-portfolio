@@ -11,10 +11,15 @@ const Header = ({
   orders,
   onGetClickedCartStatus,
   burgerBtnStateHandler,
-  setLoginStatus, logoutHandler, cartIsOpenedState, setFavItemsBtnState, favItemBtnState, favItems
+  setLoginStatus,
+  logoutHandler,
+  cartIsOpenedState,
+  setFavItemsBtnState,
+  favItemBtnState,
+  favItems,
+  listOpened,
+  listOpenedHandler,
 }) => {
-  
-
   return (
     <>
       <div className={styles.header}>
@@ -34,6 +39,8 @@ const Header = ({
             setFavItemsBtnState={setFavItemsBtnState}
             favItemBtnState={favItemBtnState}
             favItems={favItems}
+            listOpenedHandler={listOpenedHandler}
+            listOpened={listOpened}
           />
         </div>
       </div>

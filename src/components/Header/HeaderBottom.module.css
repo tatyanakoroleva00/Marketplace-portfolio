@@ -2,14 +2,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-bottom: 2rem;
-    gap: 2rem;
+    justify-items: space-between;
 }
 .header__nav-element {
     display: flex;
     align-items: center;
     gap: 1rem;
     order: 1;
+    flex: 2;
 }
 .nav-element__marketplace {
     font-size: 2.5rem;
@@ -22,13 +22,20 @@
 .nav-element__marketplace:hover {
     opacity: 1;
 }
-@media screen and (min-width: 600px) and (max-width: 1200px) {
+
+@media screen and (max-width: 1460px) {
+    .nav-element__marketplace {
+        display: none;
+    }
     .header__bottom {
         justify-content: space-between;
-        flex-wrap: wrap;
-        
+        gap: 1rem;
     }
     .header__nav-element {
-        order: 1;
+        display: flex;
+        /* background-color: green; */
+        justify-content: center;
+        flex: 1;
     }
-}
+} 
+

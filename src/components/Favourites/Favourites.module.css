@@ -6,7 +6,8 @@
     padding: 2rem 2rem 0rem 2rem;
     overflow-x: auto;
     background-color: rgb(255, 221, 159);
-    top: 10rem; 
+    /* top: 10rem;  */
+    top: 1rem;
     right: 10rem;
     z-index: 9000;
     margin-top: 0.5rem;

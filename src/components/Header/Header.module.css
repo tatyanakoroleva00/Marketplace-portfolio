@@ -5,9 +5,10 @@
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     z-index: 1003;
-    position: relative;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem 1rem 2rem 1rem;
 }
 .header__container {
     display: flex;
@@ -16,9 +17,8 @@
     margin: 0 auto;
 }
 
-@media screen and (max-width: 1200px) {
-    .header__container {
-        padding-left: 1rem;
-        padding-right: 1rem;
+@media screen and (max-width: 1460px) {
+    .header {
+        padding-bottom: 1rem;
     }
 }

@@ -10,7 +10,7 @@ const BurgerMenu = ({ burgerBtnStateHandler, onGetCategory}) => {
   return (
     <div className={styles["burger-menu-wrapper"]}>
       <div onClick={() => burgerBtnStateHandler()} className={styles["menu-close-btn"]}>
-        <span className="material-symbols-outlined">close</span>
+        <span className={`material-symbols-outlined ${styles['close-btn']}`}>close</span>
       </div>
       <nav>
         <ul className={styles["burger-menu"]}>

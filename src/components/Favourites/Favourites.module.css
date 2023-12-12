@@ -6,7 +6,6 @@
     padding: 2rem 2rem 0rem 2rem;
     overflow-x: auto;
     background-color: rgb(255, 221, 159);
-    /* top: 10rem;  */
     top: 1rem;
     right: 10rem;
     z-index: 9000;
@@ -32,4 +31,25 @@
 .fav-page-link:hover {
     color: rgb(8, 8, 191);
     opacity: 1;
+}
+
+@media screen and (max-width: 1780px) {
+    .favourite-items-modal-window {
+        position: fixed;
+        top: 0; 
+        right: 0;
+        margin-top: 9.8rem;
+        margin-right: 5rem;
+    }
+}
+@media screen and (max-width: 1460px) {
+    .favourite-items-modal-window {
+        margin-top: 5.5rem;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .favourite-items-modal-window {
+        display: none;
+    }
 }

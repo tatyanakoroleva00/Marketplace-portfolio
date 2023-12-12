@@ -15,7 +15,7 @@ export default function List({ input, listOpened, onGetInputText }) {
       {input.length > 0 && (
         <ul className={listOpened ? styles["list-items"] : styles.white}>
           {filteredData.map((item) => (
-            <li onClick={() => onGetInputText(item.category, item.text)} className={styles["list-item"]} key={item.id}>
+            <li onClick={() => onGetInputText(item.category, item.text, false)} className={styles["list-item"]} key={item.id}>
               {item.text}
             </li>
           ))}

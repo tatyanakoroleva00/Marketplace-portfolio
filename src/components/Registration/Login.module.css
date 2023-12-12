@@ -5,7 +5,7 @@
     padding: 2rem;
     background-color:rgba(0, 0, 0, 0.695);
     border-radius: 9px;
-    position: absolute;
+    position: fixed;
     z-index: 9998;
     left: 0;
     right: 0;
@@ -23,7 +23,7 @@ h1 {
     background-color: rgb(238, 238, 238);
     width: 22rem;
     border-radius: 1rem;
-    position: absolute;
+    position: fixed;
     z-index: 9999;
     top: 20%;
     right: 43%;
@@ -87,9 +87,28 @@ input::placeholder {
     margin-bottom: 1rem;
 }
 
+@media screen and (max-width: 972px) {
+    .form {
+        right: 33%;
+        width: 20rem;
+    }
+}
+
+@media screen and (max-width: 744px) {
+    .form {
+        right: 30%; 
+    }
+}
+
 @media screen and (max-width: 520px) {
 
     .form {
+        right: 20%;
         width: 70%;
+        height: 38%;
+    }
+    .form-name {
+        font-size: 1rem;
     }
 }
+

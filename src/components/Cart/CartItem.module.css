@@ -45,3 +45,63 @@
 .trash-bin:hover {
     transform: scale(1.1);
 }
+
+@media screen and (max-width: 1200px) {
+    .cart-item-wrap {
+        display: flex;
+    }
+    .left-col {
+        display: flex;
+        gap: 0.5rem;
+    }
+    .existing-number {
+        visibility: hidden;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .left-col {
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    .image-field {
+        flex: 1;
+    }
+    .item-description {
+        flex: 1;
+    }
+    .item-quantity {
+        flex: 1;
+    }
+    .trash-bin {
+        flex: 1;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .right-col {
+        align-items: flex-end;
+        margin-bottom: 1.8rem;
+    }
+}
+@media screen and (max-width: 518px) {
+    .cart-item-wrap {
+        flex-direction: column;
+    }
+    .left-col {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .right-col {
+        align-items: flex-end;
+        margin-bottom: 1.8rem;
+    }
+    .image-field, .item-description, .item-quantity, .trash-bin {
+        flex: 1;
+    }
+    .item-price {
+        justify-content: flex-end;
+    }
+
+}

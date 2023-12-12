@@ -4,29 +4,24 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: relative;
     padding-bottom: 7rem;
-    min-height: 30rem;
-    
+    min-height: 40rem;
 }
 .main-container {
     max-width: 90rem;
     margin: 0 auto;
     margin-top: 1rem;
-    
 }
 
 @media screen and (max-width: 1780px) {
-    .main {
-        margin-top: 11rem;
-    }
     .main-container {
-        margin-top: 7rem;
+        margin-top: 12rem;
     }
 }
 
-@media screen and (max-width: 1491px) {
+@media screen and (max-width: 1460px) {
     .main-container {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
+        margin-top: 7rem;
     }
-
 }

@@ -33,7 +33,6 @@
     }
     .header__nav-element {
         display: flex;
-        /* background-color: green; */
         justify-content: center;
         flex: 1;
     }

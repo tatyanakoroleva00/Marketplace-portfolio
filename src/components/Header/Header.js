@@ -18,7 +18,7 @@ const Header = ({
   favItemBtnState,
   favItems,
   listOpened,
-  listOpenedHandler,
+  listOpenedHandler, enteredValue, enteredValueHandler
 }) => {
   return (
     <>
@@ -41,6 +41,8 @@ const Header = ({
             favItems={favItems}
             listOpenedHandler={listOpenedHandler}
             listOpened={listOpened}
+            enteredValue={enteredValue}
+            enteredValueHandler={enteredValueHandler}
           />
         </div>
       </div>

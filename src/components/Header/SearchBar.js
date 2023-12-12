@@ -1,19 +1,17 @@
-import React, {useState} from "react";
+import React from "react";
 import styles from "./SearchBar.module.css";
 import List from "./List";
-export default function SearchBar({onGetInputText, listOpened, listOpenedHandler}) {
-  const [enteredValue, setEnteredValue] = useState('');
+export default function SearchBar({onGetInputText, listOpened, listOpenedHandler, enteredValueHandler, enteredValue}) {
 
   const onChangeInputHandler = (event) => {
     const value = event.target.value.toLowerCase();
-    setEnteredValue(value);
+    enteredValueHandler(value);
     if(enteredValue.length === 0) {
       listOpenedHandler(true);
     }
   };
-
   const deleteInputHandler = () => {
-    setEnteredValue('');
+    enteredValueHandler('');
     listOpenedHandler(false);
   };
   return (

@@ -19,7 +19,7 @@ export default function HeaderBottom({
   favItemBtnState,
   favItems,
   listOpenedHandler, 
-  listOpened
+  listOpened, enteredValue, enteredValueHandler
 }) {
   return (
     <div className={styles["header__bottom"]}>
@@ -34,7 +34,7 @@ export default function HeaderBottom({
         </Link>
       </div>
 
-      <SearchBar onGetInputText={onGetInputText} listOpenedHandler={listOpenedHandler} listOpened={listOpened}/>
+      <SearchBar onGetInputText={onGetInputText} listOpenedHandler={listOpenedHandler} listOpened={listOpened} enteredValueHandler={enteredValueHandler} enteredValue={enteredValue}/>
       <PictureElements
         logoutHandler={logoutHandler}
         setLoginStatus={setLoginStatus}

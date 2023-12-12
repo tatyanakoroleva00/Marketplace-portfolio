@@ -3,7 +3,7 @@ import styles from "./Favourites.module.css";
 import FavouriteItem from "./FavouriteItem";
 import { Link } from "react-router-dom";
 
-export default function Favourites({ favItems, deleteFavItemHandler, setShowFavPage, onSaveOrderItemHandler }) {
+export default function Favourites({ favItems, deleteFavItemHandler, onSaveOrderItemHandler }) {
   return (
     <div className={styles["favourite-items-modal-window"]}>
       <div className={styles["favourite-items-container"]}>

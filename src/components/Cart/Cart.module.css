@@ -66,3 +66,20 @@
 .order-made-notification {
     text-align: center;
 }
+
+@media screen and (max-width: 944px) {
+    .cart {
+        display: flex;
+        flex-direction: column;
+    }
+    .cart-items, .total {
+        width: 100%;
+    }
+    
+    .total {
+        align-items: center;
+    }
+    .cart-wrapper {
+        padding: 0rem;
+    }
+}

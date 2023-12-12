@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./PictureElements.module.css";
 import { Link } from "react-router-dom";
 import { SlPresent } from "react-icons/sl";
@@ -13,6 +13,21 @@ export default function PictureElements({
   const userIsLogged = localStorage.getItem("userIsLogged");
   const numberOfItemsInTheCart = orders.length;
   const numberOfFavourites = favItems.length;
+  const [windowSize, setWindowSize] = useState(
+    window.innerWidth
+  );
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
 
   return (
     <div
@@ -22,13 +37,14 @@ export default function PictureElements({
         <Link to="/" className={styles.link}>
           <div className={styles['pic-element']}>
             <TbHome2 className={styles.home} />
+            <span className={styles["picture-name"]}>Главная</span>
           </div>
         </Link>
       </div>
       <div className={styles.orders}>
       <Link to="/orders" className={styles.link}>
       <div className={styles["pic-element"]}>
-        <SlPresent  className={styles.present}/>
+        <SlPresent className={styles.present}/>
         <span className={styles["picture-name"]}>Заказы</span>
         </div>
         </Link>
@@ -49,6 +65,36 @@ export default function PictureElements({
           </div>
         </Link>
       </div>
+      {windowSize > 1100 && (<div
+        className={styles["pic-element__favourite"]}
+        onClick={() =>
+          setFavItemsBtnState((favItemBtnState) => !favItemBtnState)
+        }
+      >
+        <div
+          className={`${styles["pic-element"]} ${styles["favourite-element"]}`}
+        >
+          <span className={`material-symbols-outlined ${styles.favourites}`}>
+            favorite
+          </span>
+          <span className={styles["picture-name"]}>Избранное</span>
+          {numberOfFavourites !== 0 && (
+            <span>
+              <input
+                className={styles["favs-quantity"]}
+                type="text"
+                value={numberOfFavourites}
+                disabled
+              />
+            </span>
+          )}
+        </div>
+      </div>)}
+
+      {windowSize < 1101 && (
+      
+      
+      <Link className={styles.link} to="/favourites">
       <div
         className={styles["pic-element__favourite"]}
         onClick={() =>
@@ -74,6 +120,8 @@ export default function PictureElements({
           )}
         </div>
       </div>
+      </Link>)}
+
       <div
         className={styles["pic-element__login"]}
         onClick={() => getLoginBtnState()}

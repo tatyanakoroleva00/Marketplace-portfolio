@@ -107,9 +107,6 @@ export default function Cart({
             </p>
           )}
         </div>
-
-
-
         {!submitBtn &&
         <div className={styles.total}>
           <div>Итого: {total} &#8381; </div>

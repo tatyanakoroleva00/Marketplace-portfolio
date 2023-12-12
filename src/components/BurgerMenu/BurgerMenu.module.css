@@ -42,7 +42,7 @@
     opacity: 0.4;
     font-weight: 300;
 }
-.menu-close-btn span {
+.close-btn {
     position: absolute;
     top: 0;
     right: -10px;
@@ -52,7 +52,9 @@
     padding: 1rem;
     font-size: 2rem;
 }
-
+.close-btn {
+    right: 15px;
+}
 @keyframes slideIn {
     from {
         left: -100%;
@@ -64,15 +66,31 @@
     }
 }
 
-
 @media screen and (max-width: 1460px) {
+    .burger-menu-wrapper {
+        padding-top: 3rem;
+        margin-top: 5.55rem;
+    }
+
+}
+@media screen and (max-width: 1104px) {
+    .burger-menu-wrapper {
+        margin-top: 5.3rem;
+    }
+}
+@media screen and (max-width: 571px) {
     .burger-menu-wrapper{
         width: 100vw;
-        height: 100vw;
+        height: 100vh;
         background-color: white;
         top: 0;
         left: 0;
-        z-index: 1100;
         animation: none;
+        padding-top: 3rem;
+
+    }
+   
+    .close-btn  {
+        right: 15px;
     }
 }

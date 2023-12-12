@@ -49,6 +49,7 @@ export default function App() {
   const [filterByPriceBtn, setFilterByPriceBtn] = useState(false);
   const [orderedGoods, setOrderedGoods] = useState(orderedGoodsFromLocalStorage);
   const [listOpened, setListOpened] = useState(false);
+  const [enteredValue, setEnteredValue] = useState('');
   /**************************************************FUNCTIONS *********************************/
   /*Авто-изменение данных в хранилище при изменении кол-ва заказов или фаворитов */
   useEffect(() => {
@@ -148,6 +149,7 @@ export default function App() {
     setCategory(input);
     setRusCategory(rusCategory);
     setListOpened(false);
+    setEnteredValue('');
   };
   //HEADER. LOGIN. Выход из системы по нажатию на кнопку "выйти из системы"
   const logoutHandler = () => {
@@ -164,6 +166,9 @@ export default function App() {
   const listOpenedHandler = (result) => {
     setListOpened(result);
   };
+  const enteredValueHandler = (value) => {
+    setEnteredValue(value);
+  }
   return (
     <div>
       <Header
@@ -181,6 +186,8 @@ export default function App() {
         favItems={favItems}
         listOpened={listOpened}
         listOpenedHandler={listOpenedHandler}
+        enteredValueHandler={enteredValueHandler}
+        enteredValue={enteredValue}
       />
       <div className="main">
         <SliderCarousel />

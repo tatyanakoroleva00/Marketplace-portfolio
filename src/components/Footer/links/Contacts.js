@@ -6,7 +6,7 @@ export default function Contacts() {
     <div>
       <div style={{fontWeight : 'bold', marginBottom: '2rem', fontSize: '2rem'}}> Контакты</div>
       <div>
-        {loremIpsum({p: 3, avgSentencesPerParagraph: 10, random: true, startWithLoremIpsum: false}).map(text => (
+        {loremIpsum({p: 2, avgSentencesPerParagraph: 4, random: true, startWithLoremIpsum: false}).map(text => (
           <div style={{marginBottom: '1rem', textIndent: '2rem', lineHeight: '2rem'}} key={text}>{text}</div>
         ))}
       </div>

@@ -12,17 +12,17 @@ export default function Footer() {
         </div>
         <ul className={styles["info-column"]}>
           <li className={styles['title']}>Market Place</li>
-          <Link to="/about-us">О нас</Link>
-          <Link to="/our-partners">Наши партнеры</Link>
-          <Link to="/become-our-partner">Как стать нашим партнером</Link>
+          <Link to="/about-us" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>О нас</Link>
+          <Link to="/our-partners" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Наши партнеры</Link>
+          <Link to="/become-our-partner" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Как стать нашим партнером</Link>
         </ul>
         <ul className={styles["info-column"]}>
-          <Link to="/help" className={styles['title']}>Помощь</Link>
-          <Link to="/to-order">Как сделать заказ</Link>
-          <Link to="/payment">Оплата</Link>
-          <Link to="/delivery">Доставка</Link>
-          <Link to="/return-the-good">Как вернуть товар</Link>
-          <Link to="/contacts">Контакты</Link>
+        <li className={styles['title']}>Помощь</li>
+          <Link to="/to-order" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Как сделать заказ</Link>
+          <Link to="/payment" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Оплата</Link>
+          <Link to="/delivery" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Доставка</Link>
+          <Link to="/return-the-good" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Как вернуть товар</Link>
+          <Link to="/contacts" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Контакты</Link>
         </ul>
         <ul className={styles["info-column"]}>
           <li className={styles['title']}>Горячая линия</li>

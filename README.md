@@ -19,16 +19,20 @@ SHOPPING CART
   4. counting the price for every item
   5. counting the total
   6. order confirmation by clicking on the button
+  7. clearing the cart automatically after making an order
+  8. scaling by clicking on an image
 
 FAVOURITES
   1. Modal window (open-close)
   2. "Show more" link to pass to the favourites pages
   3. Delete button, Add to Cart Button
-  4. Possibility to add to cart from the modal window and from the favourites page 
+  4. Favourites page created (delete, add to cart buttons, scaling by clicking on an image)
+  5. Possibility to add to cart from the modal window and from the favourites page
      
 BURGER MENU
   1. categories and choice (products filter on the main page)
-  2. slide in and slide out
+  2. slide in effect
+  3. closing button
      
 PRODUCT
   1. scaling by clicking on it on the main page
@@ -44,3 +48,9 @@ SEARCH BAR
   1. ~10 words in an external js doc - to choose from
   2. Closing button
   3. UseState - on 0 characters entered the search bar fades
+
+ROUTES
+  1. Switching between pages
+
+MEDIA QUERIES (MOBILE)
+  1. A mobile-app like created

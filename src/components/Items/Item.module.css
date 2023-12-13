@@ -94,6 +94,12 @@
         height: auto;
     }
 }
+
+@media screen and (max-width: 550px) {
+    .submit-btn {
+        padding: 0.7rem;
+    }
+}
 @media screen and (max-width: 424px) {
     .item-card {
         width: auto;

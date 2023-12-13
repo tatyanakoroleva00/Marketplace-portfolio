@@ -1,0 +1,17 @@
+@media screen and (max-width: 500px) {
+  .link {
+    display: flex;
+    width: 20rem;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgba(137, 124, 166, 0.34);
+  }
+  .link:hover {
+    background-color: rgba(137, 124, 166, 0.34);
+    color: white;
+  }
+}

@@ -68,7 +68,6 @@ export default function App() {
     if (orders.length > 0) {
       orders.forEach((el) => {
         if (el.id === item.id) {
-          console.log("oups");
           isInArray = true;
         }
       });

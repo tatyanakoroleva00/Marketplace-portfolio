@@ -103,5 +103,8 @@
     .item-price {
         justify-content: flex-end;
     }
+    .trash-bin {
+        font-size: 2rem;
+    }
 
 }

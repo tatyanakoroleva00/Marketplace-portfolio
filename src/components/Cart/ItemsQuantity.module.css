@@ -25,3 +25,16 @@
     border-radius: 10px;
     border: none;
 }
+
+@media screen and (max-width: 500px) {
+    .quantity {
+        width: 3rem;
+        padding: 1rem;
+        border-radius: 5px;
+        margin: 1rem 0.5rem;
+
+    }
+    .subtr-btn, .add-btn {
+        font-size: 3rem;
+    }
+}

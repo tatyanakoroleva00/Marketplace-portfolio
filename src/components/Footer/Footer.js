@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Footer.module.css";
 import qrcode from './images/qr-code.png';
 import { Link } from "react-router-dom";
+import InfoLink from "./links/InfoLink";
 export default function Footer() {
   return (
     <div className={styles["footer-wrap"]}>
@@ -12,17 +13,17 @@ export default function Footer() {
         </div>
         <ul className={styles["info-column"]}>
           <li className={styles['title']}>Market Place</li>
-          <Link to="/about-us" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>О нас</Link>
-          <Link to="/our-partners" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Наши партнеры</Link>
-          <Link to="/become-our-partner" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Как стать нашим партнером</Link>
+          <Link to="/about-us" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><InfoLink>О нас</InfoLink></Link>
+          <Link to="/our-partners" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><InfoLink>Наши партнеры</InfoLink></Link>
+          <Link to="/become-our-partner" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><InfoLink>Стать партнером</InfoLink></Link>
         </ul>
         <ul className={styles["info-column"]}>
         <li className={styles['title']}>Помощь</li>
-          <Link to="/to-order" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Как сделать заказ</Link>
-          <Link to="/payment" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Оплата</Link>
-          <Link to="/delivery" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Доставка</Link>
-          <Link to="/return-the-good" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Как вернуть товар</Link>
-          <Link to="/contacts" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Контакты</Link>
+        <Link to="/to-order" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><InfoLink>Как сделать заказ</InfoLink></Link>
+        <Link to="/payment" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><InfoLink>Оплата</InfoLink></Link>
+        <Link to="/delivery" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><InfoLink>Доставка</InfoLink></Link>
+        <Link to="/return-the-good" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><InfoLink>Как вернуть товар</InfoLink></Link>
+        <Link to="/contacts" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><InfoLink>Контакты</InfoLink></Link>
         </ul>
         <ul className={styles["info-column"]}>
           <li className={styles['title']}>Горячая линия</li>
